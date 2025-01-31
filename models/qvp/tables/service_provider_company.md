@@ -39,3 +39,4 @@ NO | NAME | DATA TYPE | PK | FK | COMMENTS
 37|`license_document_file_id` | varchar |  |  | 
 38|`status` | varchar |  |  | 
 39|`verification_types` | json |  |  | 
+40|`internal` | boolean |  |  | 

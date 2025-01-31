@@ -18,11 +18,11 @@ NO | NAME | DATA TYPE | PK | FK | COMMENTS
 11|`date_of_birth` | timestamp |  |  | 
 12|`phone_number` | varchar |  |  | 
 13|`country_code` | varchar |  |  | 
-14|`country` | varchar |  |  | 
-15|`deleted_at` | timestamp |  |  | 
-16|`passport_id` | uuid |  | [`passport`](passport.md) | 
-17|`current_location` | varchar |  |  | 
-18|`state` | varchar |  |  | 
-19|`current_location_validated` | varchar |  |  | 
-20|`ip_address` | varchar |  |  | 
-21|`request_reason` | varchar |  |  | 
+15|`country` | varchar |  |  | 
+18|`deleted_at` | timestamp |  |  | 
+19|`passport_id` | uuid |  | [`passport`](passport.md) | 
+20|`current_location` | varchar |  |  | 
+21|`state` | varchar |  |  | 
+22|`current_location_validated` | varchar |  |  | 
+23|`ip_address` | varchar |  |  | 
+24|`request_reason` | varchar |  |  | 

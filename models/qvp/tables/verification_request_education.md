@@ -47,3 +47,10 @@ NO | NAME | DATA TYPE | PK | FK | COMMENTS
 40|`apostille_added` | boolean |  |  | 
 41|`verifier_user_id` | uuid |  |  | 
 42|`education_institute_place_id` | varchar |  |  | 
+44|`education_institute_id` | varchar |  |  | 
+45|`report_file_id` | varchar |  |  | 
+46|`validation_id` | uuid |  |  | 
+47|`updated_at` | timestamp |  |  | 
+48|`exclude_from_already_verified` | boolean |  |  | 
+49|`education_certificate_file_id` | uuid |  |  | 
+50|`education_transcript_file_id` | uuid |  |  | 

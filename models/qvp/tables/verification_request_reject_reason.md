@@ -10,3 +10,5 @@ NO | NAME | DATA TYPE | PK | FK | COMMENTS
 3|`request_id` | uuid |  | [`verification_request`](verification_request.md) | 
 4|`comment` | text |  |  | 
 5|`created_at` | timestamp |  |  | 
+6|`request_type` | varchar |  |  | 
+7|`verification_request_type_id` | varchar |  |  | 

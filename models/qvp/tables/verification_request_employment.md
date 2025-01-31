@@ -37,3 +37,5 @@ NO | NAME | DATA TYPE | PK | FK | COMMENTS
 36|`end_verification_at` | timestamp |  |  | 
 37|`verifier_user_id` | uuid |  |  | 
 38|`months_of_experience` | integer |  |  | 
+39|`join_at` | date |  |  | 
+40|`report_file_id` | varchar |  |  | 

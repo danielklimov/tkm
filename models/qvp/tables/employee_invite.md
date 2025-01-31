@@ -10,7 +10,7 @@ NO | NAME | DATA TYPE | PK | FK | COMMENTS
 3|`service_provider_id` | uuid |  | [`service_provider_company`](service_provider_company.md) | 
 4|`token` | varchar |  |  | 
 5|`email` | varchar |  |  | 
-6|`expire_at` | timestamp |  |  | 
-7|`created_at` | timestamp |  |  | 
-8|`deleted_at` | timestamp |  |  | 
-9|`verification_types` | json |  |  | 
+7|`expire_at` | timestamp |  |  | 
+8|`created_at` | timestamp |  |  | 
+9|`deleted_at` | timestamp |  |  | 
+10|`verification_types` | json |  |  | 

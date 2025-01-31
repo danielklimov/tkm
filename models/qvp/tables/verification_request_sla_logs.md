@@ -12,3 +12,6 @@ NO | NAME | DATA TYPE | PK | FK | COMMENTS
 5|`timestamp_stop` | varchar |  |  | 
 6|`interval_seconds` | varchar |  |  | 
 7|`status` | varchar |  |  | 
+8|`education_id` | uuid |  | [`verification_request_education`](verification_request_education.md) | 
+9|`candidate_professional_certificate_id` | uuid |  | [`verification_request_candidate_professional_certificate`](verification_request_candidate_professional_certificate.md) | 
+10|`employment_experience_id` | uuid |  |  | 

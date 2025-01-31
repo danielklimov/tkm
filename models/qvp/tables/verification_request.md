@@ -30,3 +30,10 @@ NO | NAME | DATA TYPE | PK | FK | COMMENTS
 31|`major_entity_id` | uuid |  | [`fast_track_major_entity_record`](fast_track_major_entity_record.md) | 
 32|`other_major_entity_name` | varchar |  |  | 
 33|`fast_track_immediate_record_id` | uuid |  | [`fast_track_immediate_record`](fast_track_immediate_record.md) | 
+34|`verified_education_id` | uuid |  | [`verification_request_education`](verification_request_education.md) | 
+35|`eligibility_score_id` | uuid |  | [`verification_request_eligibility_score`](verification_request_eligibility_score.md) | 
+37|`candidate_professional_certificate_id` | uuid |  | [`verification_request_candidate_professional_certificate`](verification_request_candidate_professional_certificate.md) | 
+38|`verified_candidate_professional_certificate_id` | uuid |  | [`verification_request_candidate_professional_certificate`](verification_request_candidate_professional_certificate.md) | 
+39|`education_form_filled_in` | boolean |  |  | 
+40|`professional_certificates_form_filled_in` | boolean |  |  | 
+41|`version` | integer |  |  | 

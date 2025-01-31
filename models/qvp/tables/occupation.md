@@ -20,3 +20,8 @@ NO | NAME | DATA TYPE | PK | FK | COMMENTS
 13|`main_tasks` | text |  |  | 
 15|`any_major` | boolean |  |  | Signifies thet the occupation requires any major degree. TODO: is it correct?
 16|`published` | boolean |  |  | The occupation will appear in web app. TODO: Correct?
+17|`minimum_education_level_id` | integer |  | [`education_level`](education_level.md) | 
+18|`updated_by_id` | uuid |  | [`users`](users.md) | 
+19|`global` | boolean |  |  | 
+20|`requirement_group` | integer |  |  | 
+21|`subcategory_id` | uuid |  | [`occupation_subcategory`](occupation_subcategory.md) | 

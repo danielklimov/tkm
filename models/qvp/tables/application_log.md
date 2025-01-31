@@ -12,3 +12,5 @@ NO | NAME | DATA TYPE | PK | FK | COMMENTS
 5|`data` | text |  |  | 
 6|`context_id` | varchar |  |  | 
 7|`created_at` | timestamp |  |  | 
+8|`verification_request_type` | varchar |  |  | 
+9|`verification_request_type_id` | varchar |  |  | 

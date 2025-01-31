@@ -10,3 +10,4 @@ NO | NAME | DATA TYPE | PK | FK | COMMENTS
 3|`previous_invalid_fields` | text |  |  | 
 4|`created_at` | timestamp |  |  | 
 5|`deleted_at` | timestamp |  |  | 
+6|`verification_request_type` | varchar |  |  | 

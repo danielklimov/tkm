@@ -16,3 +16,10 @@ NO | NAME | DATA TYPE | PK | FK | COMMENTS
 10|`mandate_from_date` | timestamp |  |  | date from which is_mandated is true
 11|`id` | uuid | V |  | 
 12|`alpha2code` | varchar |  |  | 2-letter country code
+13|`iso3code` | varchar |  |  | 
+14|`iso2code` | varchar |  |  | 
+15|`iso_number` | integer |  |  | 
+16|`updated_by_id` | uuid |  | [`users`](users.md) | 
+17|`is_active` | boolean |  |  | 
+18|`created_at` | timestamp |  |  | 
+19|`updated_at` | timestamp |  |  | 
