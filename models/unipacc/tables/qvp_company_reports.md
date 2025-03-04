@@ -2,16 +2,37 @@ qvp_company_reports
 ----------------------------
 
 
-NO | NAME | DATA TYPE | PK | FK | DESCRIPTION  | COMMENTS          
----|------|-----------|----|----|--------------|----------
-1|`id` | uuid | V |  | autogen
-2|`company_id` | uuid |  | [`qvp_companies`](qvp_companies.md) | QVP service provider company
-3|`report_status` | varchar |  |  | Status of the report. One of: accepted, waiting.
-4|`file_id` | varchar |  | [`file_storage`](file_storage.md) | A reference to file_storage table.
-5|`invoice_id` | uuid |  | [`qvp_company_invoices`](qvp_company_invoices.md) | An invoice that this report is attached to.
-6|`created_at` | timestamp |  |  | 
-7|`updated_at` | timestamp |  |  | 
-8|`deleted_status` | integer |  |  | 0 - active record, 1 - deleted record.
-20|`created_at` | timestamp |  |  | 
-21|`updated_at` | timestamp |  |  | 
-22|`deleted_status` | integer |  |  | 0 - active record, 1 - deleted record.
+NO | NAME | DATA TYPE | PK | FK | DESCRIPTION            
+---|------|-----------|----|----|-------------
+{% sql2md %}
+with z as (
+select
+    t.table_name,
+    t.ordinal_position as num,
+    t.ordinal_position::varchar as ordinal_position,
+    '`' || t.field_name || '`' as field_name,
+    case t.data_type
+      when 'character varying' then 'varchar'
+      when 'timestamp without time zone' then 'timestamp'
+      else t.data_type
+    end,
+    coalesce(t.pk,'') as pk,
+    case
+      when t.fk = '' then ''
+      else '[`' || t.fk || '`](' || t.fk || '.md)'
+    end as fk,
+    coalesce(t.descr, '') descr,
+    coalesce(t.comments1) comments1
+  from
+    tm_local.stg_uni_column_comments t
+  where 1=1
+    and t.table_name = 'qvp_company_reports'
+)
+select
+  z.ordinal_position || '|' || z.field_name || ' | ' || z.data_type || ' | ' || z.pk || ' | ' || z.fk
+    || ' | ' || z.descr --|| ' | ' || z.comments1 as md_col
+from
+  z
+order by z.table_name, z.num
+{% endsql2md %}
+

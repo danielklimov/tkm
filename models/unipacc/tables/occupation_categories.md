@@ -2,16 +2,37 @@ occupation_categories
 ----------------------------
 
 
-NO | NAME | DATA TYPE | PK | FK | DESCRIPTION  | COMMENTS          
----|------|-----------|----|----|--------------|----------
-1|`id` | uuid | V |  | Auto-generated or manually assigned during migration
-2|`name_en` | varchar |  |  | Name in English
-3|`name_ar` | varchar |  |  | Name in Arabic
-4|`code` | varchar |  |  | User-defined numeric code used for sorting
-5|`verification_type_code` | integer |  |  | 1 - qualification, 2 - skills
-6|`min_years_of_experience` | integer |  |  | Minimum years of experience required for verification for any occupation under this category
-7|`is_published` | boolean |  |  | Officialy available in web app
-8|`svp_exam_conf` | jsonb |  |  | Exam configuration params. In use only by SVP
-9|`created_at` | timestamp |  |  | 
-10|`updated_at` | timestamp |  |  | 
-11|`deleted_status` | integer |  |  | 0 - active record, 1 - deleted record.
+NO | NAME | DATA TYPE | PK | FK | DESCRIPTION            
+---|------|-----------|----|----|-------------
+{% sql2md %}
+with z as (
+select
+    t.table_name,
+    t.ordinal_position as num,
+    t.ordinal_position::varchar as ordinal_position,
+    '`' || t.field_name || '`' as field_name,
+    case t.data_type
+      when 'character varying' then 'varchar'
+      when 'timestamp without time zone' then 'timestamp'
+      else t.data_type
+    end,
+    coalesce(t.pk,'') as pk,
+    case
+      when t.fk = '' then ''
+      else '[`' || t.fk || '`](' || t.fk || '.md)'
+    end as fk,
+    coalesce(t.descr, '') descr,
+    coalesce(t.comments1) comments1
+  from
+    tm_local.stg_uni_column_comments t
+  where 1=1
+    and t.table_name = 'occupation_categories'
+)
+select
+  z.ordinal_position || '|' || z.field_name || ' | ' || z.data_type || ' | ' || z.pk || ' | ' || z.fk
+    || ' | ' || z.descr --|| ' | ' || z.comments1 as md_col
+from
+  z
+order by z.table_name, z.num
+{% endsql2md %}
+
