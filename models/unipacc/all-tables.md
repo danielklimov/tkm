@@ -42,4 +42,4 @@ TABLE NAME                                   | DESCRIPTION
 [`verification_requests`](tables/verification_requests.md) | Qualification verification request from an applicant - the central table that stores basic info. Tables that contain other pieces of information on verification request reference this table. 
 [`verification_request_sla_holds`](tables/verification_request_sla_holds.md) | A 'hold' is a state when a verification request cannot be verified at the moment for certain resons (e.g. educational institution does not respond).
 [`verification_request_validations`](tables/verification_request_validations.md) | Validations of verification request with history
-[`verification_request_verified_employment_experience`](tables/verification_request_verified_employment_experience.md) | A link between vr_employment and vr that signifies that vr_employment has been verified
+[`vr_verified_employment_experience`](tables/vr_verified_employment_experience.md) | A link between vr_employment and vr that signifies that vr_employment has been verified
