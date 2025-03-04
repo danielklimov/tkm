@@ -4,35 +4,12 @@ qvp_company_employees
 
 NO | NAME | DATA TYPE | PK | FK | DESCRIPTION            
 ---|------|-----------|----|----|-------------
-{% sql2md %}
-with z as (
-select
-    t.table_name,
-    t.ordinal_position as num,
-    t.ordinal_position::varchar as ordinal_position,
-    '`' || t.field_name || '`' as field_name,
-    case t.data_type
-      when 'character varying' then 'varchar'
-      when 'timestamp without time zone' then 'timestamp'
-      else t.data_type
-    end,
-    coalesce(t.pk,'') as pk,
-    case
-      when t.fk = '' then ''
-      else '[`' || t.fk || '`](' || t.fk || '.md)'
-    end as fk,
-    coalesce(t.descr, '') descr,
-    coalesce(t.comments1) comments1
-  from
-    tm_local.stg_uni_column_comments t
-  where 1=1
-    and t.table_name = 'qvp_company_employees'
-)
-select
-  z.ordinal_position || '|' || z.field_name || ' | ' || z.data_type || ' | ' || z.pk || ' | ' || z.fk
-    || ' | ' || z.descr --|| ' | ' || z.comments1 as md_col
-from
-  z
-order by z.table_name, z.num
-{% endsql2md %}
-
+1|`id` | uuid | V |  | auto generated
+2|`user_id` | uuid |  | [`users`](users.md) | User account used by the employee to log in to app
+3|`qvp_company_id` | uuid |  | [`qvp_companies`](qvp_companies.md) | QVP company the user works for
+4|`created_at` | timestamp |  |  | 
+5|`updated_at` | timestamp |  |  | 
+6|`deleted_status` | integer |  |  | 0 - active record, 1 - deleted record.
+18|`created_at` | timestamp |  |  | 
+19|`updated_at` | timestamp |  |  | 
+20|`deleted_status` | integer |  |  | 0 - active record, 1 - deleted record.

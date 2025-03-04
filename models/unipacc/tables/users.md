@@ -4,35 +4,17 @@ users
 
 NO | NAME | DATA TYPE | PK | FK | DESCRIPTION            
 ---|------|-----------|----|----|-------------
-{% sql2md %}
-with z as (
-select
-    t.table_name,
-    t.ordinal_position as num,
-    t.ordinal_position::varchar as ordinal_position,
-    '`' || t.field_name || '`' as field_name,
-    case t.data_type
-      when 'character varying' then 'varchar'
-      when 'timestamp without time zone' then 'timestamp'
-      else t.data_type
-    end,
-    coalesce(t.pk,'') as pk,
-    case
-      when t.fk = '' then ''
-      else '[`' || t.fk || '`](' || t.fk || '.md)'
-    end as fk,
-    coalesce(t.descr, '') descr,
-    coalesce(t.comments1) comments1
-  from
-    tm_local.stg_uni_column_comments t
-  where 1=1
-    and t.table_name = 'users'
-)
-select
-  z.ordinal_position || '|' || z.field_name || ' | ' || z.data_type || ' | ' || z.pk || ' | ' || z.fk
-    || ' | ' || z.descr --|| ' | ' || z.comments1 as md_col
-from
-  z
-order by z.table_name, z.num
-{% endsql2md %}
-
+1|`email` | varchar |  |  | User's email used for logging in
+2|`roles` | varchar[] |  |  | Roles
+3|`first_name` | varchar |  |  | 
+4|`last_name` | varchar |  |  | 
+5|`phone_number` | varchar |  |  | 
+6|`phone_country_id` | integer |  | [`countries`](countries.md) | Country code that the phone number is issued in (not the telephone country code itself). The telephone country code is looked up in countries table
+7|`password` | varchar |  |  | password digest.
+8|`last_active_at` | timestamp |  |  | 
+9|`invalid_login_attempts` | integer |  |  | 
+10|`two_factor_secret_key` | varchar |  |  | 
+11|`is_second_factor_passed` | boolean |  |  | 
+12|`created_at` | timestamp |  |  | 
+13|`updated_at` | timestamp |  |  | 
+14|`deleted_status` | integer |  |  | 0 - active record, 1 - deleted record.
