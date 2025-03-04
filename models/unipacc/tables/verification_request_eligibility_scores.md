@@ -1,4 +1,3 @@
-
 verification_request_eligibility_scores
 ----------------------------
 

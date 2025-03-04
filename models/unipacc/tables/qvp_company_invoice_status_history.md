@@ -1,4 +1,3 @@
-
 qvp_company_invoice_status_history
 ----------------------------
 

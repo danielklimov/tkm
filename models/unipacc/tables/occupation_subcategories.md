@@ -1,4 +1,3 @@
-
 occupation_subcategories
 ----------------------------
 

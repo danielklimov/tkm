@@ -1,4 +1,3 @@
-
 verification_requests
 ----------------------------
 
@@ -20,7 +19,7 @@ NO | NAME | DATA TYPE | PK | FK | DESCRIPTION  | COMMENTS
 13|`document_id` | integer |  |  | User-readable id of the document | 
 14|`assigned_at` | timestamp |  |  | Date and time when the vr was assigned to a specific verifier (employee) within the Service provider | 
 15|`used_discount` | boolean |  |  |  | 
-"16|`vr_types` | json |  |  | An array of verification_request types required: [""education"",""experience"",""professionalCertificate""] | "
+16|`vr_types` | json |  |  | An array of verification_request types required: ["education","experience","professionalCertificate"] | 
 17|`received_at` | timestamp |  |  | Received (distributed to) by a Service provider company | 
 18|`payment_details` | json |  |  | JSON describing payment totals as well as separate payments as an array | 
 19|`fast_track_major_entity_record_id` | uuid |  | [`fast_track_major_entity_record`](fast_track_major_entity_record.md) |  | 

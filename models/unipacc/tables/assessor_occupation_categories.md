@@ -1,4 +1,3 @@
-
 assessor_occupation_categories
 ----------------------------
 

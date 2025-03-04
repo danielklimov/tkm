@@ -1,4 +1,3 @@
-
 qvp_companies
 ----------------------------
 
@@ -32,7 +31,7 @@ NO | NAME | DATA TYPE | PK | FK | DESCRIPTION  | COMMENTS
 26|`agreed_on_terms_and_conditions` | boolean |  |  | The service provider company has agreed on terms and conditions by Takamol | yes
 27|`license_document_file_id` | varchar |  | [`file_storage`](file_storage.md) | A reference to a file that contains the company's license. | 
 28|`company_status` | varchar |  |  | Current status of the company. One of: active, deactivated, suspended. | only these three
-"29|`verification_types` | json |  |  | An array of one or more verification types that this company can do. The full set of possible types: [""employment"",""education"",""professionalCertificate"",""experience""] | "
+29|`verification_types` | json |  |  | An array of one or more verification types that this company can do. The full set of possible types: ["employment","education","professionalCertificate","experience"] | 
 30|`is_internal` | boolean |  |  | There are SPs considered as internal, thus belonging to Takamol holding. They can verify some specific requests, this bool is used to ensure the correct work of the Load balancer | 
 31|`created_at` | timestamp |  |  |  | 
 32|`updated_at` | timestamp |  |  |  | 

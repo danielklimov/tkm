@@ -1,4 +1,3 @@
-
 fast_track_immediate_records
 ----------------------------
 
@@ -10,7 +9,7 @@ NO | NAME | DATA TYPE | PK | FK | DESCRIPTION  | COMMENTS
 3|`entity_name_arabic` | varchar |  |  |  | 
 4|`created_at` | timestamp |  |  |  | 
 5|`updated_at` | timestamp |  |  |  | 
-"6|`status` | varchar |  |  | fast track status. TODO; find out what other values except 'active' there can be | "
+6|`status` | varchar |  |  | fast track status. TODO; find out what other values except 'active' there can be | 
 7|`country_id` | integer |  | [`countries`](countries.md) | Country of citizenship of the user that this fast track record is created for | 
 8|`created_at` | timestamp |  |  |  | 
 9|`updated_at` | timestamp |  |  |  | 

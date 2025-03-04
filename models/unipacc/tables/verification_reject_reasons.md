@@ -1,4 +1,3 @@
-
 verification_reject_reasons
 ----------------------------
 

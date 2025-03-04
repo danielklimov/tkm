@@ -1,4 +1,3 @@
-
 verification_payment_checkout
 ----------------------------
 

@@ -1,4 +1,3 @@
-
 education_institutes_additional_fees
 ----------------------------
 
