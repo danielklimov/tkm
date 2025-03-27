@@ -16,7 +16,7 @@ NO | NAME | DATA TYPE | PK | FK | DESCRIPTION
 10|`job_offer_file_id` | uuid |  | [`file_storage`](file_storage.md) | Job offer document
 11|`qvp_company_id` | uuid |  | [`qvp_companies`](qvp_companies.md) | 
 12|`qvp_company_employee_id` | uuid |  | [`qvp_company_employees`](qvp_company_employees.md) | 
-13|`service_provider_order_id` | varchar |  |  | TODO: what is it?
+13|`service_provider_order_id` | varchar |  |  | In QVP V1 vrs were tied to a service provider id. This field is not used any more but it is migrated just in case.
 14|`vr_status` | varchar |  |  | One of: draft, unpaid, payment pending, paid, qualified, withdrawn, unqualified.
 15|`report_file_id` | uuid |  | [`file_storage`](file_storage.md) | uuid - a file that contains a printable verification report
 16|`number_id` | integer |  |  | TODO: what is it?
@@ -26,14 +26,14 @@ NO | NAME | DATA TYPE | PK | FK | DESCRIPTION
 20|`vr_types` | json |  |  | An array of verification_request types required: ["education","experience","professionalCertificate"]
 21|`received_at` | timestamp |  |  | Received (distributed to) by a Service provider company
 22|`payment_details` | json |  |  | JSON describing payment totals as well as separate payments as an array
-23|`fast_track_major_entity_record_id` | uuid |  | [`fast_track_major_entity_record`](fast_track_major_entity_record.md) | 
-24|`major_entity_id` | uuid |  | [`fast_track_major_entity_record`](fast_track_major_entity_record.md) | 
+23|`fast_track_major_entity_record_id` | uuid |  | [`fast_track_major_entity_records`](fast_track_major_entity_records.md) | 
+24|`major_entity_id` | uuid |  | [`fast_track_major_entity_records`](fast_track_major_entity_records.md) | 
 25|`other_major_entity_name` | varchar |  |  | 
-26|`fast_track_immediate_record_id` | uuid |  | [`fast_track_immediate_record`](fast_track_immediate_record.md) | 
-27|`verified_education_id` | uuid |  | [`verification_request_education`](verification_request_education.md) | TODO: why are there 2 separate references to vr_education in this table - one in this field and another - in education_id? If education has been verified it would have been logical to store 'verified' status in vr_education table
-28|`eligibility_score_id` | uuid |  | [`verification_request_eligibility_scores`](verification_request_eligibility_scores.md) | 
-29|`candidate_professional_certificate_id` | uuid |  | [`verification_request_candidate_professional_certificate`](verification_request_candidate_professional_certificate.md) | 
-30|`verified_candidate_professional_certificate_id` | uuid |  | [`verification_request_candidate_professional_certificate`](verification_request_candidate_professional_certificate.md) | 
+26|`fast_track_immediate_record_id` | uuid |  | [`fast_track_immediate_records`](fast_track_immediate_records.md) | 
+27|`verified_education_id` | uuid |  | [`verification_request_education`](verification_request_education.md) | An already verified edutation that in certain cases can be attached to the VR
+28|`eligibility_score_id` | uuid |  | [`verification_request_eligibility_scores`](verification_request_eligibility_scores.md) | A reference to a set of marks (or scores) that defines the eligibility score for this VR
+29|`candidate_professional_certificate_id` | uuid |  | [`verification_request_professional_certificates`](verification_request_professional_certificates.md) | A professional certificate that is submitted for verification with the current VR.
+30|`verified_candidate_professional_certificate_id` | uuid |  | [`verification_request_professional_certificates`](verification_request_professional_certificates.md) | An already verified professional certificate that can be attached to the vr in certain cases.
 31|`education_form_filled_in` | boolean |  |  | Shows if verification_request_education is filled in
 32|`professional_certificates_form_filled_in` | boolean |  |  | Shows if verification_request_candidate_professional_certificate is filled in
 33|`qvp_version` | integer |  |  | not sure but I guess it distinguishes the requests from QVP v1 and QVP v2. Better to keep it

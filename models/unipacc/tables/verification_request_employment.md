@@ -14,7 +14,7 @@ NO | NAME | DATA TYPE | PK | FK | DESCRIPTION
 8|`occupation_id` | integer |  | [`occupations`](occupations.md) | An occupation from the list of occupations that matches occupation_name
 9|`years_of_experience` | integer |  |  | Months of experience and years of experience means the same but there's a complicated calculation logic under the hood which uses months and years in different places, so instead of recalculating every time it is stored like this
 10|`months_of_experience` | integer |  |  | Months of experience and years of experience means the same but there's a complicated calculation logic under the hood which uses months and years in different places, so instead of recalculating every time it is stored like this
-11|`job_offer_file_id` | varchar |  | [`file_storage`](file_storage.md) |  
+11|`job_offer_file_id` | varchar |  | [`file_storage`](file_storage.md) | Experience or Clearance Certificate 
 12|`employment_start_date` | date |  |  | TODO: pls clarify what 'join' means.
 13|`verification_status` | varchar |  |  | One of: Pending,In progress, For Update, Updated, On hold, Verified, Unable to verify, Rejected, Rejected, Withdrawn
 14|`verification_request_id` | uuid |  | [`verification_requests`](verification_requests.md) | 
