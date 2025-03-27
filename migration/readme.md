@@ -36,41 +36,40 @@ reduces load on source databases.
 After successful bulk migration and several incremental migrations, 
 a set of test queries are run on source and target databases to ensure that
 all data have been copied, certain key indicators match on the source and on the target.
-Uni PACC application is tested on prod environment with several test user accounts
+Uni PACC application is tested on with several test user accounts
 to make sure there are no errors in relationships between tables, semantics of the data model is not
-damaged during migration, all files are in place.
+damaged during migration, all attached files are accessible.
 
-When there are no more errors, source applications go offline,
+When there is no more errors, source applications go offline,
 the last incremental load is executed and the target system goes online.
 
 ### Data Layers ###
 
-These are the steps to move data from source DBs to target DB:
+These are the steps to move data from source DBs to the target DB:
 
-1. Extract changed records, move them to OCI object storage in csv files.
+1. Extract changed records, move them to OCI object storage in gzipped csv files.
 2. Read a file from OCI object storage, load it into a temporary table in the 'staging area'
    of the target database.
-3. Read temporary table, merge it into the permanent table in the 'staging area'.
+3. Read temporary table, merge it into the permanent table in the 'staging area' with updated/inserted/deleted timestamps and statuses.
 3. Select and transform data from tables in the staging area in the target database and
    merge results of the transformation into the final tables.
 
 After each step data ends up in one of three 'data layers':
 
-1. OCI Staging layer (OCI) - source data converted to gzipped csv files.
-2. Target DB staging layer (STG)  - copies of data from source systems.
+1. OCI Staging layer (OCI) - source data in gzipped csv files.
+2. Target DB staging layer (STG)  - copies of data from source systems with added timestamps.
 3. Business layer (BL) - data transformed to Uni PACC data model.
 
-### Independent DI Processes ###
+### Independence of DI Processes ###
 
 One 'STG' DI process loads a cnunk of changed records from one source table
 into one table in the STG layer.
 
-One 'BL' DI process loads changed records (or fully reloads)
-one table in the BL.
+One 'BL' DI process loads changed records or fully reloads only one table in the BL.
 
 Processes can be launched independently of each other.
 
-Processes can be launched several times without any negative consequences.
+Processes can be launched multiple times without any negative consequences.
 
 Processes can be chained together to form a 'pipeline' that loads
 several tables at once. Each process of the pipeline still can be launched
@@ -80,7 +79,7 @@ Tools
 ------
 
 The approach described above can be implemented using different tools.
-However for the sake of clarity I am describing in detail
+However, for the sake of clarity I am describing in detail
 how it can be implemented using Apache Airflow as the core integration machine.
 
 The choice of Airflow was determined by the following factors:
@@ -93,7 +92,10 @@ The choice of Airflow was determined by the following factors:
 4. Airflow integrates smoothly with Git and CI/CD processes.
 5. All the necessary Airflow libraries (a.k.a Providers), that contain
    DB connectors, S3 readers/writers etc. are available as open source.
-6. Any custom extensions to Airflow are easy to implement in python.
+6. Custom extensions to Airflow are easy to implement in python.
+7. Scales well from a single-node cluster to multiple-node cluster.
+8. Has web-interface for launching/stopping/monitoring processes.
+9. Has command-line and web API interfaces.
 
 Data Integration Architecture
 ------------------------------
