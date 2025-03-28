@@ -126,8 +126,6 @@ Data Integration Architecture
 
 ![Migration Architecture Diagram](img/data-migr-arch.png)
 
-### Description ###
-
 
 Environments
 -------------
@@ -139,7 +137,7 @@ There are two environments set up for the project:
 
 Each environment includes:
 
-1. OCI bucket for storage of file attachments and temporary files.
+1. OCI bucket(s) for storage of file attachments and temporary files.
 2. Target PostgreSQL database.
 3. A virtual machine for Airflow components.
 
@@ -178,21 +176,64 @@ phone_number     | phone               | `985***12`
 first_name       | hash                | `a0145d67c`
 email            | email               | `a21@g***.com`
 
-Obfuscated data can be loaded into STG in DEV environment or used by developers locally.
+Obfuscated files are loaded into STG layer in DEV environment. They can also
+be used by developers locally.
 
-Changed Data Capture
----------------------
+Change Data Capture (CDC)
+--------------------------
 
-TODO: describe the possiblity of using PostgreSQL logical replication log and more simple
-approach using timestamp columns and full reload for small tables without CDC.
+### CDC for tables ###
 
-Details on Processing files
------------------------------
+Most of the tables in QVP and SVP have timestamp columns `created_at`, `updated_at`
+and `deleted_at`. These columns can be used to track new and changed records.
+Small tables can be fully reloaded at each run. For big tables
+changes for the last 7 days can be captured at each run and job runs scheduled
+daily. This will deliver changed records with overlapping 6 days of changes,
+but it doesn't matter as only changed records will actually be updated.
 
-TODO: describe technique to capture files using file metadata stored in file_storage and active_storage*
-tables.
+### CDC for files ###
+
+Files that are attached to documents are described in QVP and SVP in these tables:
+
+- QVP - `file_storage`;
+- SVP - `active_storage_blobs`.
+
+Both tables have timestamp column `created_at` that can be used to track new files.
+
+The DAG that loads files to OCI layer can be built like this:
+
+1. Select source paths of all files that appeared after certain timestamp.
+2. Copy all these files to OCI layer.
+
+If the DAG is scheduled to run every 24 hours, at each run it can select all files that were
+created during last 48 hours. Thus, every file is loaded twice or at least once.
+If the DAG failed and the error wasn't noticed for 24 hours, the file will still be loaded
+at the next run.
+
+### Overlapping CDC Intervals ###
+
+It is possible to get last changed timestamp from the target table
+and then select from source table only those records that have `updated_at > target_last_change_date`.
+
+Pros: 
+
+- no need to load one record several times, it saves CPU and network resources;
+- if the scheduler wasn't running the job for several days, the gap will be covered in one run
+  automatically.
+
+Cons:
+
+- More complicated logic is built into the DAG. It's more difficult to run it manually
+  with custom CDC interval if the need arises.
+- Additional dependency on connection to the target table. Posibilities of errors
+  due to connection timeout etc.
+- Possibility of increase in load on source system because the size of the dataset
+  to be unloaded can change and therefore time required to unload it may change.
+
+
 
 The Plan
 ---------
 
-TODO: describe the precise steps to be performed to follow this approach.
+TODO: describe the steps to be performed to follow this approach: servers, buckets,
+git repo, CI/CD, dev env setup for developers, what else?
