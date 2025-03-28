@@ -184,7 +184,7 @@ Changed Data Capture
 ---------------------
 
 TODO: describe the possiblity of using PostgreSQL logical replication log and more simple
-approach using timestamp columns.
+approach using timestamp columns and full reload for small tables without CDC.
 
 Details on Processing files
 -----------------------------
@@ -192,3 +192,7 @@ Details on Processing files
 TODO: describe technique to capture files using file metadata stored in file_storage and active_storage*
 tables.
 
+The Plan
+---------
+
+TODO: describe the precise steps to be performed to follow this approach.
