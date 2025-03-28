@@ -132,9 +132,63 @@ Data Integration Architecture
 Environments
 -------------
 
+There are two environments set up for the project:
+
+1. DEV - development and testing.
+2. PROD - production.
+
+Each environment includes:
+
+1. OCI bucket for storage of file attachments and temporary files.
+2. Target PostgreSQL database.
+3. A virtual machine for Airflow components.
+
+A git repository is required for the project.
+
+Development with Airflow
+-------------------------
+
+'Airflow Standalone' can be installed on the developer's own workstation.
+In this case the development and testing can be done without deploying
+anything. The developer workstation must either have direct access to the target UniPACC database
+in DEV environment, or the developer must install a local PostrgreSQL instance.
+
+If the common DEV Airflow cluster is used, then to test his work
+the developer must push his changes to the dev branch in git repository,
+after which the CI/CD process will be triggered and the changes deployed
+to dev Airflow cluster.
+
 Obfuscation of sensitive information
 -------------------------------------
 
+In order to write SQL transformations efficiently, developers need some test data.
+Test data should closely resemble production data in terms of size, distribution
+of values in a coulmn, errors, null fields and other discrepancies. The best option
+is to use real production data. As production data contains sensitive information,
+a set of csv files should be created in OCI layer in the same way as it is done during
+STG processes, except that data in the fields containing sensitive information
+is obfuscated. 
+
+A set of obfuscation DAGs is genenerated. Each DAG selects source data with obfuscation applied
+to certain fields. Results are stored in OCI as gzipped csv files. E.g.:
+
+FIELD NAME       | OBFUSCATION TYPE    | RESULT
+-----------------|---------------------|-------------
+phone_number     | phone               | `985***12`
+first_name       | hash                | `a0145d67c`
+email            | email               | `a21@g***.com`
+
+Obfuscated data can be loaded into STG in DEV environment or used by developers locally.
+
+Changed Data Capture
+---------------------
+
+TODO: describe the possiblity of using PostgreSQL logical replication log and more simple
+approach using timestamp columns.
+
 Details on Processing files
 -----------------------------
+
+TODO: describe technique to capture files using file metadata stored in file_storage and active_storage*
+tables.
 
