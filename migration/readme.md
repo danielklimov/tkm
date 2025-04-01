@@ -4,120 +4,159 @@ Migration Plan
 Approach
 ---------
 
+### Introduction ###
+
 The general approach to migration is to implement it in the same way
-as Data Warehouses are implemented, based on these principles:
+as Data Warehouses are built. The main principles are:
 
-1. Using changed data capture (CDC) and incremental updates to pull data from data sources.
-2. Data goes through several 'layers' along the migration path.
-3. One data integration (DI) process updates one target table.
-4. Uniform migration logic is used for all tables. It allows to generate most of the DI code
-   automatically from source or target table definitions.
-5. Extract, load, transform (ELT) principle is used, meaning that data transformations
-   are done as the last step, and all transformation logic is defined in SQL.
+1. Create a temporary so called 'Data Warehouse' (DWH) to serve as a hub
+   where all data is loaded, all the cleansing transformations take place.
+   'DWH' may be just a few separate schemas in the target database.
+   After successful migration DWH is discarded.
+1. Use Change Data Capture (CDC) techniques to pull deltas (increments) from data sources
+   where possible. Small tables are fully reloaded every time, changed records are marked by
+   comparing new and old versions of records.
+2. Data goes through several staging 'layers' until it reaches the final migrated state.
+3. One Data Integration (DI) process updates only one target table.
+4. Standardized logic is used to migrate data from sources to 'DWH'. Most of the DI code
+   is generated automatically from table metadata.
+5. Extract, load, transform (ELT) aproach is used to do the transformation.
+   It means that all data transformations are done as the last step, all transformation code is written in SQL.
 
-### Requirements and assumptions ###
+### Requirements: sources and targets ###
 
 There are 2 kinds of data that must be migrated:
 
 1. Database tables in 2 PostgreSQL databases - QVP and SVP.
-2. Files in OCI object storage for QVP and SVP that act as attachments to other database entities,
+2. Files in OCI object storage for QVP and SVP. File are used as attachments to other database entities,
    e.g. verification request reports, certificates, invoices etc.
 
-Target storage:
+Targets:
 
 1. Unified PostgreSQL database - UniPACC.
-2. OCI object storage for file attachments.
+2. Unified OCI object storage for file attachments from QVP and SVP.
 
-All the attachment files are going to be actually copied to the new OCI object storage bucket
-during migration.
+Note: All the files are going to be actually copied to the new OCI object storage bucket
+during migration. New UniPACC tables will not be referencing files in old OCI buckets.
 
-### Incremental Loads ###
+### Loading Source Data ###
 
-Data are going to be moved in two phases:
+Data are going to be moved from source systems to the new 'DWH' in two phases:
 
-1. Bulk migration - all data from all tables, all files are moved to the target storages.
-2. Incremental migration - periodical extraction of new/changed data
+1. Bulk migration - all data from all tables, all files are moved to the target storage.
+2. Incremental migration(s) - periodical extraction of new/changed data
    from source tables and from OCI object storage.
 
-This approach from the very beginning provides room for error during every step
-of migration and reduces load on source databases.
+This approach provides some room for error during every step
+of migration. It reduces load on source databases. It allows
+to separate the transformation part from the data loading part and allows
+to run transformations over and over again until they produce clean results.
 
 ### Cutover Plan ###
 
 After successful bulk migration and several incremental migrations, 
 a set of test queries are run on source and target databases to ensure that
 all data have been copied, certain key indicators match each other on source and target databases.
-Uni PACC application is tested with several test applicant's accounts
-to make sure there is no errors in references between tables, semantics of the data model is not
-damaged during migration, all attached files are accessible.
+Uni PACC application is then tested with several test user accounts
+to make sure there is no errors in references between tables, the semantics of the data model is not
+damaged, all attached files are accessible.
 
 When there is no more errors, source applications go offline,
-the last incremental load is executed and the target system goes online.
+the last incremental load is executed and the target UniPACC goes online.
 
 ### Data Layers ###
 
-These are the steps to move data from source DBs to the target DB:
+The steps to move data from source DBs to the target DB:
 
-1. Extract changed records, save them to OCI object storage in gzipped csv files.
-2. Read a file from OCI object storage, load it into a temporary table in the 'staging area'
-   of the target database.
-3. Read temporary table in the 'staging area', merge it into the permanent table in the
-   same 'staging area' with updated/inserted/deleted timestamps.
-4. Select data from tables in the staging area in the target database, transform them
-   as needed and merge results of the transformation into the final table.
+1. Extract changed records, save them to OCI object storage (OCI Layer) as gzipped csv files.
+2. Read a file from OCI Layer, load it into a temporary table in the 'Staging Area' (STG)
+   of the 'DWH'.
+3. Read temporary table in the STG area, merge it into the permanent table in the
+   same STG with updated/inserted/deleted timestamps. Track if records has actually changed.
+4. Select data from permanent tables in the STG area, transform them
+   as needed with SQL, optional temporary tables are allowed.
+   Merge results of the transformation into the final table in the final schema - Business Layer (BL).
 
-After each step data ends up in one of three 'data layers':
+After each step data ends up in one of three layers:
 
 1. OCI Staging layer (OCI) - source data in gzipped csv files.
-2. Target DB staging layer (STG)  - copies of data from source systems with added timestamps.
-3. Business layer (BL) - data transformed to Uni PACC data model.
+2. DWH staging layer (STG)  - copies of data from source systems with added timestamps.
+3. Business layer (BL) - data transformed to Uni PACC data model format.
 
-### DI Processes ###
+### Data Integration Processes ###
 
-Two types of DI processes are created:
+There are two kinds of DI processes:
 
-1. STG - steps 1-3. Updates one permanent table in STG layer.
-2. BL - step 4. Updates one table in BL layer.
+1. Source to STG. Reads 1 source table, saves file to OCI, reads it, loads to STG,
+   updates one permanent table in STG.
+2. BL. Updates one table in BL layer using one or more tables in STG.
+   It can be either incremental or full reload of the target table.
 
-Processes can be launched independently of each other.
+Each DI process is a self-contained unit of work. It can be made up
+of several steps, but these steps constitute one unit of work.
 
-Any process can be launched multiple times without any negative consequences.
-It either updates the target table, or does nothing if there is no fresh data.
+DI Processes can be launched independently of each other and they do not
+depend on any other DI processes - they are *stateless*.
 
-Processes can be grouped and launched in parallel as a group.
+Any DI process can be launched multiple times without any negative consequences.
+It either updates the target table with fresh data, or does nothing if there is no fresh data.
 
-Processes or groups of processes can be chained and launched one after another
-to form a 'pipeline'. Each link of the pipeline still can be launched
-independently without causing any problem.
+Processes can be grouped and launched either simultaneously in parallel, as a group.
 
-Tools
-------
+Processes or groups of processes can be launched sequentially to form a 'pipeline'.
+Pipelines can be useful for administration and relaunching groups of DI processes,
+they can be used to build dependencies, e.g. update several STG tables, then
+update BL tables that depend on them.
 
-The approach described above can be implemented using different tools.
-However, for the sake of clarity all further description is based on the assumption
-that it is implemented using Apache Airflow as the core integration machine.
+Each process of the pipeline can be run separately without causing any problem.
+The whole system of DI processes is built in such a way that if any error in any DI process occurs,
+this error does not stop any other process, nor does it cause any error in other processes.
+The only result of the error is that target tables will not include those changes
+that were being processed when the error happened.
+After the error is corrected, the whole BL layer 'heals itself' - i.e. it eventually comes
+to the correct state without re-running any other processes manually, only by the scheduler.
+
+Recommended Tools
+------------------
+
+The approach described above can be implemented using different tools with
+variable degree of success.
+
+One tool that fits the above requirements perfectly is Apache Airflow.
+For the sake of clarity all further description is based on the assumption
+that the migration is implemented using Apache Airflow as the core DI machine
+and specific Airflow terms are used.
+
 
 The choice of Airflow is based by the following factors:
 
-1. Airflow is a mature professional level DI platform well-supported in the industry;
-2. Airflow DI process or 'DAG' is defined in a simple python file. Usually
-   it is a trivial python file with only definitions but no actual algorithms coded in it.
-3. With Airflow there are many ways to generate many uniform DAGs using simple
-   JSON/YAML config files. All STG DAGs can be generated from table definitions
-   without manual coding.
-4. Airflow integrates smoothly into Git, git flow and CI/CD processes.
-5. The required Airflow DB connectors, OCI/S3 readers/writers etc. are already available
-   as open source python modules. No custom coding is necessary.
-6. Custom extensions to Airflow are easy to implement as python modules if needed.
+1. Airflow is a mature DI platform well-supported in the industry.
+   Due to this fact there is a lot of information, experience,
+   components, approaches and best practices.
+2. DI process in Airflow is called a 'Directed Acyclic Graph' (DAG).
+   A DAG is a simple python file that contains definitions of so-called
+   'Operators' (steps) to be called and the definition of a sequence of steps (the pipeline).
+   Airflow is code-based, rather than UI-based which makes it
+   git-friendly and code-generation-friendly.
+4. Airflow naturally integrates into Git, git flow and CI/CD process.
+   An Airflow server reloads DAG definitions when they change which makes CI/CD 
+   deployment trivial.
+5. The required Airflow 'Operators', like OCI/S3 readers/writers, PostgreSQL loaders etc.
+   are readily available as open source Airflow libraries. No custom coding is necessary.
+6. Custom specialized Airflow operators are easy to implement if needed.
 7. Airflow scales from a single-node cluster to multiple-node cluster.
 8. It has web interface for launching/stopping/monitoring processes.
 9. It has a built-in secret storage for storing connection credentials that
-   allows tech support users to launch and monitor processes but not be able
+   allows users to launch and monitor processes but not be able
    to see connection passwords.
-9. It has command-line and web API interfaces.
+10. It has command-line and web API interfaces and can be controlled programmatically.
+11. It can be installed on a developer's laptop which
+    can make development process much more flexible.
 
-As the result, custom coding is required only for BL transformations
-and all transformations are expressed as SQL select statements.
+After initial configuration of Airflow and setting up DAG generation,
+custom coding is required only for BL transformations
+and all transformations are expressed as SQL select statements
+that are executed with an Airflow operator.
 
 Data Integration Architecture
 ------------------------------
