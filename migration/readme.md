@@ -9,11 +9,12 @@ Approach
 The general approach to migration is to implement it in the same way
 as Data Warehouses are built. The main principles are:
 
-1. Create a temporary so called 'Data Warehouse' (DWH) to serve as a hub
-   where all data is loaded, all the cleansing transformations take place.
-   'DWH' may be just a few separate schemas in the target database.
+1. Create a temporary database - a 'Data Warehouse' (DWH) to serve as a hub
+   where all data is loaded and all cleansing and transformations take place.
+   It may be not necessary to create a separate database for 'DWH' as it may be placed
+   in a few separate schemas in the target database.
    After successful migration DWH is discarded.
-1. Use Change Data Capture (CDC) techniques to pull deltas (increments) from data sources
+1. Use Change Data Capture (CDC) techniques to pull increments from data sources
    where possible. Small tables are fully reloaded every time, changed records are marked by
    comparing new and old versions of records.
 2. Data goes through several staging 'layers' until it reaches the final migrated state.
@@ -25,19 +26,16 @@ as Data Warehouses are built. The main principles are:
 
 ### Requirements: sources and targets ###
 
-There are 2 kinds of data that must be migrated:
+Sources:
 
 1. Database tables in 2 PostgreSQL databases - QVP and SVP.
-2. Files in OCI object storage for QVP and SVP. File are used as attachments to other database entities,
+2. Files in OCI object storage for QVP and SVP. These files are used as attachments to other database entities,
    e.g. verification request reports, certificates, invoices etc.
 
 Targets:
 
 1. Unified PostgreSQL database - UniPACC.
 2. Unified OCI object storage for file attachments from QVP and SVP.
-
-Note: All the files are going to be actually copied to the new OCI object storage bucket
-during migration. New UniPACC tables will not be referencing files in old OCI buckets.
 
 ### Loading Source Data ###
 
@@ -58,8 +56,8 @@ After successful bulk migration and several incremental migrations,
 a set of test queries is run on source and target databases to ensure that
 all data have been copied, certain key indicators match each other on source and target databases.
 Uni PACC application is tested with several test user accounts to make sure
-there is no errors in column values, foreign keys, the semantics of the data model is not
-damaged, UI works as expected, all attached files are accessible.
+there are no errors in column values, foreign keys, semantics of the data model is not
+damaged, web application works as expected, all attached files are accessible.
 
 When there is no more errors, source applications go offline,
 the last incremental load is run and the target UniPACC goes online.
