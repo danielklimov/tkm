@@ -12,4 +12,4 @@ Diagram
 Tables
 -------
 
-1. [verification_requests](../tables/verification_requests)
+1. [verification_requests](../tables/verification_requests.md)
