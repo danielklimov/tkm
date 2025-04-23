@@ -7,7 +7,7 @@ have one-to-one relationships with VR.
 Diagram
 --------
 
-![verification request diagram]()
+![verification request diagram](img/verification-request-1.png)
 
 Tables
 -------
