@@ -11,7 +11,5 @@ NO | NAME | DATA TYPE | PK | FK | DESCRIPTION
 5|`invoice_id` | uuid |  | [`qvp_company_invoices`](qvp_company_invoices.md) | An invoice that this report is attached to.
 6|`created_at` | timestamp |  |  | 
 7|`updated_at` | timestamp |  |  | 
-8|`deleted_status` | integer |  |  | 0 - active record, 1 - deleted record.
-20|`created_at` | timestamp |  |  | 
-21|`updated_at` | timestamp |  |  | 
-22|`deleted_status` | integer |  |  | 0 - active record, 1 - deleted record.
+8|`deleted_status` | varchar |  |  | ACTIVE, DELETED
+23|`dasdasd` | asdas | dasda | [`dasd`](dasd.md) | 

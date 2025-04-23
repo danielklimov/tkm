@@ -4,7 +4,7 @@ professional_certificates
 
 NO | NAME | DATA TYPE | PK | FK | DESCRIPTION            
 ---|------|-----------|----|----|-------------
-1|`id` | integer | V |  | 
+1|`id` | uuid | V |  | 
 2|`name_en` | varchar |  |  | certificate name in English
 3|`name_ar` | varchar |  |  | certificate name in Arabic
 4|`institute_name_en` | varchar |  |  | Institute or organization that issues the certificate
