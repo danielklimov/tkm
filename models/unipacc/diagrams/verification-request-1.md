@@ -32,11 +32,9 @@ This is an 'extension' table meaning that it has one-to-one relationship
 with VR and contains fields that could have been in `verification_requests` table itself,
 but they have been historically kept in a separate table.
 
-- [verification_request_persona](../tables/verification_request_persona.md)
+- [verification_request_personas](../tables/verification_request_personas.md)
 
-### Tables that VR references ###
-
-These are other tables that VR references in many-to-one relationships:
+### Other tables referenced from VR ###
 
 - [applicants](../tables/applicants.md)
 - [countries](../tables/countries.md)
