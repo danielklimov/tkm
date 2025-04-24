@@ -5,8 +5,9 @@ Diagrams
 ---------
 
 1. [Applicants](diagrams/applicants.md)  and connected tables.
-1. [Occupations](diagrams/occupations.md) and connected tables.
-2. [Verification request](diagrams/verification-request-1.md) - main diagram.
+2. [Occupations](diagrams/occupations.md) and connected tables.
+3. [QVP Companies](diagrams/qvp-companies.md) and connected tables.
+4. [Verification request](diagrams/verification-request-1.md) - main diagram.
 
 Other Documents
 ----------------
