@@ -11,4 +11,4 @@ NO | NAME | DATA TYPE | PK | FK | DESCRIPTION
 5|`is_published` | boolean |  |  | Visible in webapp
 6|`created_at` | timestamp |  |  | 
 7|`updated_at` | timestamp |  |  | 
-8|`deleted_status` | integer |  |  | 0 - active record, 1 - deleted record.
+8|`deleted_status` | varchar |  |  | ACTIVE, DELETED

@@ -122,8 +122,8 @@ The only negative result of an error is that the target table of the DI process
 will not include updated data. After the error has been corrected,
 all dependent target tables come to the correct state after the next update.
 
-Recommended Tools
-------------------
+Data Integration Tools
+-----------------------
 
 The approach described above can be implemented using different tools with
 variable degree of success.
@@ -202,7 +202,7 @@ The developer must push his changes to the dev branch in git repository,
 after which the CI/CD process is triggered and the changes deployed
 to dev Airflow cluster.
 
-Preparing Test Data
+Test Data
 ---------------------
 
 In order to write SQL transformations efficiently, developers need test data.

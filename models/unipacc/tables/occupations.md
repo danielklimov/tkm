@@ -22,4 +22,4 @@ NO | NAME | DATA TYPE | PK | FK | DESCRIPTION
 16|`is_lmh_mandated` | boolean |  |  | Skill verification for this occupation is mandated by LMH.
 17|`created_at` | timestamp |  |  | 
 18|`updated_at` | timestamp |  |  | 
-19|`deleted_status` | integer |  |  | 0 - active record, 1 - deleted record.
+19|`deleted_status` | varchar |  |  | ACTIVE, DELETED

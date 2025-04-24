@@ -8,7 +8,8 @@ NO | NAME | DATA TYPE | PK | FK | DESCRIPTION
 2|`name_en` | varchar |  |  | Name in English
 3|`name_ar` | varchar |  |  | Name in Arabic
 4|`equivalent_years_of_experience` | integer |  |  | Number of years of working experience that may substitute the edutation certificate
-5|`updated_by_user_id` | uuid |  | [`users`](users.md) | User that last updated the record
-6|`created_at` | timestamp |  |  | 
-7|`updated_at` | timestamp |  |  | 
-8|`deleted_status` | integer |  |  | 0 - active record, 1 - deleted record.
+5|`occupation_program_code` | varchar |  |  | Enum. One of 'QVP', 'SVP'
+6|`updated_by_user_id` | uuid |  | [`users`](users.md) | User that last updated the record
+7|`created_at` | timestamp |  |  | 
+8|`updated_at` | timestamp |  |  | 
+9|`deleted_status` | varchar |  |  | ACTIVE, DELETED

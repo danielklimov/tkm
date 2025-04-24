@@ -12,4 +12,4 @@ NO | NAME | DATA TYPE | PK | FK | DESCRIPTION
 6|`country_id` | uuid |  | [`countries`](countries.md) | Country of citizenship of the user that this fast track record is created for
 7|`created_at` | timestamp |  |  | 
 8|`updated_at` | timestamp |  |  | 
-9|`deleted_status` | integer |  |  | 0 - active record, 1 - deleted record.
+9|`deleted_status` | varchar |  |  | ACTIVE, DELETED

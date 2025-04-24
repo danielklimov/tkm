@@ -4,7 +4,7 @@ countries
 
 NO | NAME | DATA TYPE | PK | FK | DESCRIPTION            
 ---|------|-----------|----|----|-------------
-1|`id` | uuid | V |  | Imitation of uuid created using ISO digital country code (during migration). Later on real random uuids may be used.
+1|`id` | uuid | V |  | Imitation of uuid created using ISO 3-letter country code. Later on real random uuids may be used.
 2|`name_en` | varchar |  |  | English name
 3|`name_ar` | varchar |  |  | Arabic name
 4|`nationality_name_en` | varchar |  |  | How a person that belongs to this nationality is caled, e.g. Kuwaiti, Peruvian etc. (English)
@@ -19,4 +19,4 @@ NO | NAME | DATA TYPE | PK | FK | DESCRIPTION
 13|`is_lmh_svp_mandated` | boolean |  |  | Skill verification for this country is mandated by LMH.
 14|`created_at` | timestamp |  |  | 
 15|`updated_at` | timestamp |  |  | 
-16|`deleted_status` | integer |  |  | 0 - active record, 1 - deleted record.
+16|`deleted_status` | varchar |  |  | ACTIVE, DELETED

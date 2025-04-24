@@ -10,4 +10,4 @@ NO | NAME | DATA TYPE | PK | FK | DESCRIPTION
 4|`invoice_status` | varchar |  |  | one of: not_sent, paid, payment_pending, returned, waiting
 5|`created_at` | timestamp |  |  | 
 6|`updated_at` | timestamp |  |  | 
-7|`deleted_status` | integer |  |  | 0 - active record, 1 - deleted record.
+7|`deleted_status` | varchar |  |  | ACTIVE, DELETED

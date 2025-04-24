@@ -14,17 +14,20 @@ NO | NAME | DATA TYPE | PK | FK | DESCRIPTION
 8|`expiry_date` | date |  |  | Certificate expiry date
 9|`institute_website` | varchar |  |  | Website URL of the institute that issued the certificate
 10|`serial_no` | varchar |  |  | Human-readable certificate number
-11|`verification_status` | varchar |  |  | One of: payment_pending, updated, withdrawn, unpaid, unable_to_verify, returned, on_hold, rejected, drafted, pending, in_progress,accepted
-12|`verifier_user_id` | varchar |  | [`users`](users.md) | User account that was used by the verifier (qvp_company_employee)
-13|`appeal_count` | integer |  |  | Total number of appeals
-14|`first_verification_at` | timestamp |  |  | 
-15|`start_verification_at` | timestamp |  |  | 
-16|`end_verification_at` | timestamp |  |  | 
-17|`sla_days_in_progress` | integer |  |  | Statistics: total days in progress
-18|`sla_days_on_hold` | integer |  |  | 
-19|`issuer_name` | varchar |  |  | Organization that issued the certificate
-20|`report_file_id` | varchar |  | [`file_storage`](file_storage.md) | Verification report - printable version in pdf format
-21|`validation_id` | uuid |  | [`verification_request_validations`](verification_request_validations.md) | A reference to the most recent validation
-22|`created_at` | timestamp |  |  | 
-23|`updated_at` | timestamp |  |  | 
-24|`deleted_status` | integer |  |  | 0 - active record, 1 - deleted record.
+11|`verification_status` | varchar |  |  | One of: DRAFT, PENDING, IN_PROGRESS, FOR_UPDATE, UPDATED, ON_HOLD, VERIFIED, UNABLE_TO_VERIFY, REJECTED, WITHDRAWN
+12|`verification_reject_reason_id` | uuid |  | [`verification_reject_reasons`](verification_reject_reasons.md) | Nullable. When verification_status is REJECTED or UNABLE_TO_VERIFY, a reject reason is required.
+13|`verification_reject_comment` | varchar |  |  | If verification_reject_reason_id is set and it requires comment, the comment is specified here.
+14|`verifier_user_id` | varchar |  | [`users`](users.md) | User account that was used by the verifier (qvp_company_employee)
+15|`appeal_count` | integer |  |  | Total number of appeals
+16|`first_verification_at` | timestamp |  |  | Same as 'end_verification_at' when verification is done for the first time.
+17|`second_verification_at` | timestamp |  |  | Same as 'end_verification_at' when verification is done for the second time.
+18|`start_verification_at` | timestamp |  |  | 
+19|`end_verification_at` | timestamp |  |  | 
+20|`sla_days_in_progress` | integer |  |  | Statistics: total days in progress
+21|`sla_days_on_hold` | integer |  |  | 
+22|`issuer_name` | varchar |  |  | Organization that issued the certificate
+23|`report_file_id` | varchar |  | [`file_storage`](file_storage.md) | Verification report - printable version in pdf format
+24|`validation_id` | uuid |  | [`verification_request_validations`](verification_request_validations.md) | A reference to the most recent validation
+25|`created_at` | timestamp |  |  | 
+26|`updated_at` | timestamp |  |  | 
+27|`deleted_status` | integer |  |  | 0 - active record, 1 - deleted record.

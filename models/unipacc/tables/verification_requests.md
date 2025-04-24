@@ -9,7 +9,7 @@ NO | NAME | DATA TYPE | PK | FK | DESCRIPTION
 3|`education_id` | uuid |  | [`verification_request_education`](verification_request_education.md) | 
 4|`employment_id` | uuid |  | [`verification_request_employment`](verification_request_employment.md) | 
 5|`validation_id` | uuid |  | [`verification_request_validations`](verification_request_validations.md) | Reference to the most recent validation
-6|`applicant_id` | integer |  | [`applicants`](applicants.md) | 
+6|`applicant_id` | integer |  | [`applicants`](applicants.md) | The applicant that this VR belongs to
 7|`employer_name` | varchar |  |  | The employer that issued the job offer
 8|`occupation_id` | uuid |  | [`occupations`](occupations.md) | Occupation from the job offer
 9|`joining_date` | date |  |  | Joining date from the job offer
@@ -19,23 +19,26 @@ NO | NAME | DATA TYPE | PK | FK | DESCRIPTION
 13|`service_provider_order_id` | varchar |  |  | In QVP V1 vrs were tied to a service provider id. This field is not used any more but it is migrated just in case.
 14|`vr_status` | varchar |  |  | One of: draft, unpaid, payment pending, paid, qualified, withdrawn, unqualified.
 15|`report_file_id` | uuid |  | [`file_storage`](file_storage.md) | uuid - a file that contains a printable verification report
-16|`document_number` | integer |  |  | User-friendly numeric document number that is used to identify the VR in emails, communications, printed documents. 
-17|`document_id` | integer |  |  | User-readable id of the document
-18|`assigned_at` | timestamp |  |  | Date and time when the vr was assigned to a specific verifier (employee) within the Service provider
-19|`used_discount` | boolean |  |  | 
-20|`vr_types` | json |  |  | An array of verification_request types required: ["education","experience","professionalCertificate"]
-21|`received_at` | timestamp |  |  | Received (distributed to) by a Service provider company
-22|`payment_details` | json |  |  | JSON describing payment totals as well as separate payments as an array
-23|`fast_track_major_entity_record_id` | uuid |  | [`fast_track_major_entity_records`](fast_track_major_entity_records.md) | A reference to the entity that is on the fast track major entity list if a VR is based on the offer made by such company.
-24|`other_major_entity_name` | varchar |  |  | 
-25|`fast_track_immediate_record_id` | uuid |  | [`fast_track_immediate_records`](fast_track_immediate_records.md) | 
-26|`verified_education_id` | uuid |  | [`verification_request_education`](verification_request_education.md) | An already verified edutation that in certain cases can be attached to the VR
-27|`eligibility_score_id` | uuid |  | [`verification_request_eligibility_scores`](verification_request_eligibility_scores.md) | A reference to a set of marks (or scores) that defines the eligibility score for this VR
-28|`candidate_professional_certificate_id` | uuid |  | [`verification_request_professional_certificates`](verification_request_professional_certificates.md) | A professional certificate that is submitted for verification with the current VR.
-29|`verified_candidate_professional_certificate_id` | uuid |  | [`verification_request_professional_certificates`](verification_request_professional_certificates.md) | An already verified professional certificate that can be attached to the vr in certain cases.
-30|`education_form_filled_in` | boolean |  |  | Shows if verification_request_education is filled in
-31|`professional_certificates_form_filled_in` | boolean |  |  | Shows if verification_request_candidate_professional_certificate is filled in
-32|`qvp_version` | integer |  |  | not sure but I guess it distinguishes the requests from QVP v1 and QVP v2. Better to keep it
-33|`created_at` | timestamp |  |  | 
-34|`updated_at` | timestamp |  |  | 
-35|`deleted_status` | integer |  |  | 0 - active record, 1 - deleted record.
+16|`consent_file_id` | uuid |  | [`file_storage`](file_storage.md) | A file (pdf) that contains text that the applicant agrees to the terms and conditions and applicant's name. During migration these files are migrated from qvp. In Unified PACC files are generated on request and therefore this field will always be null.
+17|`is_consent_signed` | boolean |  |  | True is applicant checked consent checkbox
+18|`document_number` | integer |  |  | User-friendly numeric document number that is used to identify the VR in emails, communications, printed documents. 
+19|`document_id` | integer |  |  | User-readable id of the document
+20|`assigned_at` | timestamp |  |  | Date and time when the vr was assigned to a specific verifier (employee) within the Service provider
+21|`used_discount` | boolean |  |  | 
+22|`received_at` | timestamp |  |  | Received (distributed to) by a Service provider company
+23|`payment_details` | json |  |  | JSON describing payment totals as well as separate payments as an array
+24|`fast_track_major_entity_record_id` | uuid |  | [`fast_track_major_entity_records`](fast_track_major_entity_records.md) | A reference to the entity that is on the fast track major entity list if a VR is based on the offer made by such company.
+25|`other_major_entity_name` | varchar |  |  | 
+26|`fast_track_immediate_record_id` | uuid |  | [`fast_track_immediate_records`](fast_track_immediate_records.md) | 
+27|`verified_education_id` | uuid |  | [`verification_request_education`](verification_request_education.md) | An already verified eduсation that in certain cases can be attached to the VR
+28|`eligibility_score_id` | uuid |  | [`verification_request_eligibility_scores`](verification_request_eligibility_scores.md) | A reference to a set of marks (or scores) that defines the eligibility score for this VR
+29|`professional_certificate_id` | uuid |  | [`verification_request_professional_certificates`](verification_request_professional_certificates.md) | A professional certificate that is submitted for verification with the current VR.
+30|`verified_professional_certificate_id` | uuid |  | [`verification_request_professional_certificates`](verification_request_professional_certificates.md) | An already verified professional certificate that can be attached to the vr in certain cases.
+31|`education_form_filled_in` | boolean |  |  | Shows if verification_request_education is filled in
+32|`professional_certificates_form_filled_in` | boolean |  |  | Shows if verification_request_candidate_professional_certificate is filled in
+33|`qvp_version` | integer |  |  | not sure but I guess it distinguishes the requests from QVP v1 and QVP v2. Better to keep it
+34|`ip_address_country_id` | uuid |  | [`countries`](countries.md) | There must be a validation based on ip, it is used for applying a VAT tax for a payment
+35|`ip_address` | varchar |  |  | ip adress where the verification request was created.
+36|`created_at` | timestamp |  |  | 
+37|`updated_at` | timestamp |  |  | 
+38|`deleted_status` | integer |  |  | 0 - active record, 1 - deleted record.

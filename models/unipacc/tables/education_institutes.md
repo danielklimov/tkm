@@ -22,4 +22,4 @@ NO | NAME | DATA TYPE | PK | FK | DESCRIPTION
 16|`updated_by_user_id` | uuid |  | [`users`](users.md) | The user who updated the record last time
 17|`created_at` | timestamp |  |  | 
 18|`updated_at` | timestamp |  |  | 
-19|`deleted_status` | integer |  |  | 0 - active record, 1 - deleted record.
+19|`deleted_status` | varchar |  |  | ACTIVE, DELETED
