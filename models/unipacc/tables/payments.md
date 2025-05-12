@@ -12,11 +12,7 @@ NO | NAME | DATA TYPE | PK | FK | DESCRIPTION
 6|`transaction_date` | timestamp |  |  | Date and time of transaction
 7|`transaction_last_4_digits` | varchar |  |  | Just last for 4 digits of payment card used for payment returned by HypePay
 8|`transaction_payment_brand` | varchar |  |  | One of: null, "visa", "master", "mada", "meeza". Not enum
-9|`transaction_status` | integer |  |  | Enum. Possible values (one of): 
-PREPARED_CHECKOUT,
-SUCCESS,
-FAILED,
-PENDING.
+9|`transaction_status` | integer |  |  | Enum. Possible values (one of):  PREPARED_CHECKOUT, SUCCESS, FAILED, PENDING.
 10|`merchant_transaction_id` | varchar |  |  | Merchant transaction id is a transaction id that is assigned by the payment system to the merchant, that is - Takamol
 11|`user_id` | uuid |  | [`users`](users.md) | A reference to user who did the payment
 12|`created_at` | timestamp |  |  | 

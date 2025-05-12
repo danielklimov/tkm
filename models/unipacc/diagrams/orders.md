@@ -24,8 +24,8 @@ The order entity consists of two tables:
 - the main table - [applicant_orders](../tables/applicant_orders.md)
 - detail table - [applicant_order_items](../tables/applicant_order_items.md).
 
-An order usually consist only one line - "Qualification verification request" or
-"Skill verification". But an additional items (lines) may be added to the order, for example, "Additional fee".
+An order usually consist of only one line - "Qualification verification request" or
+"Skill verification request". But an additional items (lines) may be added to the order, for example, "Additional fee".
 
 An order is created either from [verification_requests](../tables/verification_requests.md)
 or [svp_bookings](../tables/svp_bookings.md) and references one of these

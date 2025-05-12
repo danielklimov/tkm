@@ -18,9 +18,7 @@ NO | NAME | DATA TYPE | PK | FK | DESCRIPTION
 12|`practical_eligibility_status` | varchar |  |  | When the exam is started, we send the Create Eligibility Request to Prometric, and Prometric returns -1 (failed) or 1 (success) as the response which we store in this column
 13|`occupation_id` | uuid |  | [`occupations`](occupations.md) | The occupation that is going to be verified
 14|`edit_reason` | varchar |  |  | Admins can update the bookings, if they update - the comment is required and stored in this field
-15|`is_hidden` | boolean |  |  | When the reservation is created - it is by default is_hidden: true till payment is made
-Once User successfully made the payment - change to is_hidden: false
-In the System only is_hidden: false are shown
+15|`is_hidden` | boolean |  |  | When the reservation is created - it is by default is_hidden: true till payment is made Once User successfully made the payment - change to is_hidden: false In the System only is_hidden: false are shown
 16|`practical_exam_status` | integer |  |  | One of: RESERVED, PENDING, COMPLETED, CANCELED, WITHDRAWN, PAYMENT_FAILED
 17|`access_token` | varchar |  |  | Access token is a part of Reservation Ticket URL to attend the exam (randomly generated)
 18|`cancelled_by_user_id` | uuid |  | [`users`](users.md) | The user that cancelled the booking

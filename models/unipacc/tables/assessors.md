@@ -13,8 +13,7 @@ NO | NAME | DATA TYPE | PK | FK | DESCRIPTION
 7|`it_skills` | varchar |  |  | Information technology skills. Enum.
 8|`international_experience` | varchar |  |  | International experience (years). Enum.
 9|`experience` | varchar |  |  | Experience in (years) - enumeration: 
-10|`is_certified_assessor` | boolean |  |  | Assessors could be certified by some 3rd parties: schools, institutes, course, universitites, etc. (outside of Takamol), if during the registration assessor marks 'certified_assessor' checkbox,
-then the assessor must upload the experience_certificate 
+10|`is_certified_assessor` | boolean |  |  | Assessors could be certified by some 3rd parties: schools, institutes, course, universitites, etc. (outside of Takamol), if during the registration assessor marks 'certified_assessor' checkbox, then the assessor must upload the experience_certificate 
 11|`is_online_tools_skills` | boolean |  |  | Does the assessor have skillts for online tools: Skype, MS Office, etc.
 12|`is_professional_qualification` | boolean |  |  | Does the assessor have the professional qualification for occupations that he assesses.
 13|`location_country_id` | uuid |  | [`countries`](countries.md) | The country that assessor is located in

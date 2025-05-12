@@ -8,9 +8,7 @@ NO | NAME | DATA TYPE | PK | FK | DESCRIPTION
 2|`prometric_language_id` | uuid |  | [`prometric_languages`](prometric_languages.md) | Prometric language used for this prometric code
 3|`prometric_code` | varchar |  |  | Prometric 5-letter code
 4|`occupation_category_id` | uuid |  | [`occupation_categories`](occupation_categories.md) | Occupation category that this code belongs to.
-5|`is_non_targeted` | boolean |  |  | if true - this code will be used for eligibility creation for Users from non-target countries
-
-we have 2 type of Countries: target and non-target, for each type there is a specific booking flow
+5|`is_non_targeted` | boolean |  |  | if true - this code will be used for eligibility creation for Users from non-target countries  we have 2 type of Countries: target and non-target, for each type there is a specific booking flow
 6|`created_at` | timestamp |  |  | 
 7|`updated_at` | timestamp |  |  | 
 8|`deleted_status` | varchar |  |  | ACTIVE, DELETED
