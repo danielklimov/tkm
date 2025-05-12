@@ -46,14 +46,15 @@ documents as the 'parent' document. There are two fields for that:
 - parent_document_id - uuid referencing either `verification_requests` or `svp_bookings`.
 
 The [payments](../tables/payments.md) is a universal payment for QVP and SVP.
-The payment is created from the order and references the order as the 'parent' entity.
+The payment is created from an order and references the order as the 'parent' entity.
+The payment doesn't 'know' which initial request created the order it is paying for.
 
-The [invoices](../tables/invoices.md) is also universal for QVP and SVP. The invoice is created from payment
-and references the payment as the 'parent' document.
+The [invoices](../tables/invoices.md) table is also universal for QVP and SVP. The invoice is created from payment
+and references the payment as it's 'parent' document.
 The invoice has almost the same structure as the Order with a separate [invoice_items](../tables/invoice_items) table.
 
 Orders are an extension to `verification_requests` and `svp_bookings`, adding
-common behavior to both these tables and describing the ordering process in standardized terms.
+common behavior to both of these tables and describing the ordering process in standardized terms.
 
 
 All Tables in the Diagram
