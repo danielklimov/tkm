@@ -5,46 +5,42 @@ The diagram represents the flow of an applicant's verification request or
 an SVP booking and how both of them go into the same flow regarding payments
 and invoicing process.
 
-The whole idea is that a separate entity called "Applicant's order" has been added
-in order to unify separate flows for QVP and SVP processes - VRs and bookings, respectively.
-An order is a usual order modelled in the same way as orders are usually modelled in online shops.
-
-The order entity consists of two tables:
-
-- the main table - `applicant_orders`
-- detail table - `applicant_order_items`.
-
-Order items for one order usually consist of one line - "Qualification verification request" or
-"Skill verification". But an additional items (lines) may be added to the order, for example, "Additional fee".
-
-An order is created either from `verification_request` or `svp_booking` and references one of these
-documents as the 'parent' document.
-
-The 'Payment' is an entity that is universal for QVP and SVP. The payment is created from the order
-and references the order as the 'parent' entity.
-
-The 'Invoice' is also universal for QVP and SVP. The invoice is created from payment
-and references the payment as the 'parent' document.
-
-The invoice has almost the same structure as the Order with a separate `invoice_items` table.
-
-The flow:
-
-```
-
-verification_request -> applicant_order -> payment -> invoice 
-svp_booking
-
-```
-
 
 The Diagram
 --------
 
 ![orders diagram](img/orders.png)
 
-Tables
--------
+
+Description
+-------------
+
+The whole idea is that a separate entity called "Applicant's order" has been added
+in order to unify separate flows for QVP and SVP processes - VRs and bookings, respectively.
+An order is a usual order modelled in the same way as orders are usually modelled in online shops.
+
+The order entity consists of two tables:
+
+- the main table - [applicant_orders](../tables/applicant_orders.md)
+- detail table - [applicant_order_items](../tables/applicant_order_items.md).
+
+An order usually consist only one line - "Qualification verification request" or
+"Skill verification". But an additional items (lines) may be added to the order, for example, "Additional fee".
+
+An order is created either from [verification_requests](../tables/verification_requests.md)
+or [svp_bookings](../tables/svp_bookings.md) and references one of these
+documents as the 'parent' document.
+
+The [payments](../tables/payments.md) is a universal payment for QVP and SVP.
+The payment is created from the order and references the order as the 'parent' entity.
+
+The [invoices](../tables/invoices.md) is also universal for QVP and SVP. The invoice is created from payment
+and references the payment as the 'parent' document.
+The invoice has almost the same structure as the Order with a separate [invoice_items](../tables/invoice_items) table.
+
+
+All Tables in the Diagram
+---------------------------
 
 ### QVP and SVP Requests ###
 
