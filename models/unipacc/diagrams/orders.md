@@ -1,8 +1,8 @@
 Orders
 ========================
 
-The diagram represents how an applicant's verification request or
-SVP booking start the 'ordering, payment and invoicing' process.
+The diagram represents the process of applicant's 'ordering' Takamol verification services,
+paying for them, and receiving the invoice.
 
 
 The Diagram
@@ -14,19 +14,26 @@ The Diagram
 Description
 -------------
 
-The whole idea is that a separate entity called "Applicant's order" has been added
-in order to unify separate flows for QVP and SVP processes - VRs and bookings, respectively.
-An order is a usual order modelled in the same way as orders are usually modelled in online shops.
+A new entity - "Applicant's order" has been added
+in order to unify ordering and payments for two separate processes - QVP verification requests and SVP bookings.
+An order is modelled along the same lines as orders are usually modelled for online shops.
 
 The order entity consists of two tables:
 
 - the main table - [applicant_orders](../tables/applicant_orders.md)
-- detail table - [applicant_order_items](../tables/applicant_order_items.md).
+- order items or 'lines' - [applicant_order_items](../tables/applicant_order_items.md).
 
 An order usually consist of only one line - "Qualification verification request" or
 "Skill verification request". But an additional items (lines) may be added to the order, for example, "Additional fee".
 
-An order is created either from [verification_requests](../tables/verification_requests.md)
+An order item references another new table - [verification_services](../tables/verification_services.md).
+This table acts as a 'products' table and currently will contain only 3 records:
+
+1. Qualification verification request
+2. Skill verification exam
+3. Additional fee for qualification verification
+
+The order is created either from [verification_requests](../tables/verification_requests.md)
 or [svp_bookings](../tables/svp_bookings.md) and references one of these
 documents as the 'parent' document.
 
