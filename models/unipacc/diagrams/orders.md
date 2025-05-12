@@ -1,13 +1,12 @@
 Orders
 ========================
 
-The diagram represents the flow of an applicant's verification request or
-an SVP booking and how both of them go into the same flow regarding payments
-and invoicing process.
+The diagram represents how an applicant's verification request or
+SVP booking start the 'ordering, payment and invoicing' process.
 
 
 The Diagram
---------
+------------
 
 ![orders diagram](img/orders.png)
 
