@@ -16,7 +16,11 @@ Description
 
 A new entity - "Applicant's order" has been added
 to unify ordering and payments for two separate document flows - QVP verification requests and SVP bookings.
-Order can be thought of as a replacement for `payment_checkout` table in QVP.
+The order is:
+
+1. a replacement for `payment_checkout` table in QVP.
+2. an extension to `verification_requests` and `svp_bookings`, adding
+   common behavior to both of these tables and describing the ordering process in standardized terms.
 
 The data model for orders follows the same design pattern as orders/invoices are usually modelled in
 online businesses.
@@ -53,8 +57,6 @@ The [invoices](../tables/invoices.md) table is also universal for QVP and SVP. T
 and references the payment as it's 'parent' document.
 The invoice has almost the same structure as the Order with a separate [invoice_items](../tables/invoice_items) table.
 
-Orders are an extension to `verification_requests` and `svp_bookings`, adding
-common behavior to both of these tables and describing the ordering process in standardized terms.
 
 
 All Tables in the Diagram
