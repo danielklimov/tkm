@@ -34,19 +34,20 @@ NO | NAME | DATA TYPE | PK | FK | DESCRIPTION
 28|`appeal_count` | integer |  |  | Count of appeals. An 'appeal' is when the applicant appeals to verify education again after an unsuccessful attempt.
 29|`first_verification_at` | timestamp |  |  | Same as 'end_verification_at' when verification is done for the first time.
 30|`second_verification_at` | timestamp |  |  | Same as 'end_verification_at' when verification is done for the second time.
-31|`start_verification_at` | timestamp |  |  | Date and time when verification started
-32|`end_verification_at` | timestamp |  |  | Date and time when verification finished
+31|`start_verification_at` | timestamp |  |  | Date and time when verification started - verificaton_status became PENDING
+32|`end_verification_at` | timestamp |  |  | Date and time when verification finished - verification_status became one of: VERIFIED, UNABLE_TO_VERIFY, REJECTED, WITHDRAWN
 33|`sla_hold` | uuid |  | [`verification_request_sla_holds`](verification_request_sla_holds.md) | description of a hold if one exists for this verification
 34|`sla_days_in_progress` | integer |  |  | recalculated and updated every day
+34|`sla_days_count` | integer |  |  | Number of days that this vr is in verification - from setting PENDING status to setting one of the final statuses: VERIFIED, UNABLE_TO_VERIFY, REJECTED, WITHDRAWN. This attribute is recalculated daily
+35|`verifier_user_id` | uuid |  | [`users`](users.md) | The user that was doing the verification
 35|`sla_days_on_hold` | integer |  |  | recalculated and updated every day
-36|`verifier_user_id` | uuid |  | [`users`](users.md) | The user that was doing the verification
-37|`education_institute_place_id` | varchar |  |  | Google places Place id if applicable
-38|`education_institute_id` | varchar |  | [`education_institutes`](education_institutes.md) | Matching education institute
-39|`report_file_id` | varchar |  | [`file_storage`](file_storage.md) | verification report
-40|`validation_id` | uuid |  | [`verification_request_validations`](verification_request_validations.md) | Reference to the most recent validation object - details of validation of this request. There can be more than 1 validation per request. This field points to the most recent one.
-41|`exclude_from_already_verified` | boolean |  |  | TODO: does it mean that this request should be excluded from already verified and verified once more? Old field?
-42|`education_certificate_file_id` | uuid |  | [`file_storage`](file_storage.md) | Attachment - education certificate
-43|`education_transcript_file_id` | uuid |  | [`file_storage`](file_storage.md) | Attachment - transcript
-44|`created_at` | timestamp |  |  | 
-45|`updated_at` | timestamp |  |  | 
-46|`deleted_status` | varchar |  |  | ACTIVE, DELETED
+36|`education_institute_place_id` | varchar |  |  | Google places Place id if applicable
+37|`education_institute_id` | varchar |  | [`education_institutes`](education_institutes.md) | Matching education institute
+38|`report_file_id` | varchar |  | [`file_storage`](file_storage.md) | verification report
+39|`validation_id` | uuid |  | [`verification_request_validations`](verification_request_validations.md) | Reference to the most recent validation object - details of validation of this request. There can be more than 1 validation per request. This field points to the most recent one.
+40|`exclude_from_already_verified` | boolean |  |  | TODO: does it mean that this request should be excluded from already verified and verified once more? Old field?
+41|`education_certificate_file_id` | uuid |  | [`file_storage`](file_storage.md) | Attachment - education certificate
+42|`education_transcript_file_id` | uuid |  | [`file_storage`](file_storage.md) | Attachment - transcript
+43|`created_at` | timestamp |  |  | 
+44|`updated_at` | timestamp |  |  | 
+45|`deleted_status` | varchar |  |  | ACTIVE, DELETED

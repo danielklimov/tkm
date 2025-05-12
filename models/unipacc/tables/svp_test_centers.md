@@ -16,9 +16,9 @@ NO | NAME | DATA TYPE | PK | FK | DESCRIPTION
 10|`legislator_id` | uuid |  | [`legislators`](legislators.md) | 
 11|`latitude` | double |  |  | Test center location - latitude
 12|`longitude` | double |  |  | Test center location - longitude
-13|`created_at` | timestamp |  |  | 
-14|`updated_at` | timestamp |  |  | 
-15|`deleted_status` | varchar |  |  | ACTIVE, DELETED
+27|`created_at` | timestamp |  |  | 
 27|`created_at` | timestamp |  |  | 
 28|`updated_at` | timestamp |  |  | 
+28|`updated_at` | timestamp |  |  | 
+29|`deleted_status` | integer |  |  | 0 - active record, 1 - deleted record.
 29|`deleted_status` | integer |  |  | 0 - active record, 1 - deleted record.

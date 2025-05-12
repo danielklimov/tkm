@@ -4,7 +4,7 @@ prometric_question_logs
 
 NO | NAME | DATA TYPE | PK | FK | DESCRIPTION            
 ---|------|-----------|----|----|-------------
-1|`id` | bigint | V |  | autoincrement
+1|`id` | uuid | V |  | autoincrement
 2|`name` | varchar |  |  | Exam name
 3|`question_type` | varchar |  |  | Type of question. So far only one type was found - MultipleChoice.
 4|`correct_answer` | varchar |  |  | Correct option(s), e.g.: A, D, DEF, 

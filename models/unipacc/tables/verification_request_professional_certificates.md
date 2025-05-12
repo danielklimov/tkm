@@ -21,13 +21,14 @@ NO | NAME | DATA TYPE | PK | FK | DESCRIPTION
 15|`appeal_count` | integer |  |  | Total number of appeals
 16|`first_verification_at` | timestamp |  |  | Same as 'end_verification_at' when verification is done for the first time.
 17|`second_verification_at` | timestamp |  |  | Same as 'end_verification_at' when verification is done for the second time.
-18|`start_verification_at` | timestamp |  |  | 
-19|`end_verification_at` | timestamp |  |  | 
+18|`start_verification_at` | timestamp |  |  | Date and time when verification started - verificaton_status became PENDING
+19|`end_verification_at` | timestamp |  |  | Date and time when verification finished - verification_status became one of: VERIFIED, UNABLE_TO_VERIFY, REJECTED, WITHDRAWN
 20|`sla_days_in_progress` | integer |  |  | Statistics: total days in progress
+20|`sla_days_count` | integer |  |  | Number of days that this vr is in verification - from setting PENDING status to setting one of the final statuses: VERIFIED, UNABLE_TO_VERIFY, REJECTED. This attribute is recalculated daily
 21|`sla_days_on_hold` | integer |  |  | 
-22|`issuer_name` | varchar |  |  | Organization that issued the certificate
-23|`report_file_id` | varchar |  | [`file_storage`](file_storage.md) | Verification report - printable version in pdf format
-24|`validation_id` | uuid |  | [`verification_request_validations`](verification_request_validations.md) | A reference to the most recent validation
-25|`created_at` | timestamp |  |  | 
-26|`updated_at` | timestamp |  |  | 
-27|`deleted_status` | integer |  |  | 0 - active record, 1 - deleted record.
+21|`issuer_name` | varchar |  |  | Organization that issued the certificate
+22|`report_file_id` | varchar |  | [`file_storage`](file_storage.md) | Verification report - printable version in pdf format
+23|`validation_id` | uuid |  | [`verification_request_validations`](verification_request_validations.md) | A reference to the most recent validation
+24|`created_at` | timestamp |  |  | 
+25|`updated_at` | timestamp |  |  | 
+26|`deleted_status` | varchar |  |  | ACTIVE, DELETED

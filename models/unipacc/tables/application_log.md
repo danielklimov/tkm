@@ -10,7 +10,7 @@ NO | NAME | DATA TYPE | PK | FK | DESCRIPTION
 4|`description` | text |  |  | Textual description of the action, e.g. Verification started. Status changed from Pending to In progress
 5|`data` | text |  |  | A JSON that contains of old and new values of changed fields of some table
 6|`verification_request_id` | uuid |  |  | A reference to the PK of the verification_request that was changed
-7|`verification_request_type` | varchar |  |  | One of: professionalCertificate, experience, education. Defines which verification table is referenced by this record. One of: verification_request_employment, verification_request_certificate, verification_request_education.
+7|`verification_request_type` | varchar |  |  | A reference to the PK of the verification_request that was changed
 8|`verification_request_type_record_id` | uuid |  |  | uuid of the source record - a PK to one of the tables that are specified in verification_request_type
 9|`created_at` | timestamp |  |  | 
 10|`updated_at` | timestamp |  |  | 

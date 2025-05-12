@@ -23,18 +23,19 @@ NO | NAME | DATA TYPE | PK | FK | DESCRIPTION
 17|`employer_phone` | varchar |  |  | Employer's phone number without country code
 18|`employer_website_url` | varchar |  |  | Employer's website
 19|`verification_status` | varchar |  |  | One of: DRAFT, PENDING, IN_PROGRESS, FOR_UPDATE, UPDATED, ON_HOLD, VERIFIED, UNABLE_TO_VERIFY, REJECTED, WITHDRAWN
-20|`verification_reject_reason_id` | uuid |  | [`verification_reject_reasons`](verification_reject_reasons.md) | Nullable. When verification_status is REJECTED or UNABLE_TO_VERIFY, a reject reason is required.
-21|`verification_reject_comment` | varchar |  |  | If verification_reject_reason_id is set and it requires comment, the comment is specified here.
-22|`verification_request_id` | uuid |  | [`verification_requests`](verification_requests.md) | VR that this vr_employment is attached to
-23|`qvp_company_id` | uuid |  | [`qvp_companies`](qvp_companies.md) | Service provider who does the verification
-24|`qvp_company_employee_id` | integer |  | [`qvp_company_employees`](qvp_company_employees.md) | Service provider employee assigned for this verification
-25|`appeal_count` | integer |  |  | Candidate can appeal requests in Rejected or Unable to verify statuses
-26|`first_verification_at` | timestamp |  |  | Same as 'end_verification_at' when verification is done for the first time.
-27|`second_verification_at` | timestamp |  |  | Same as 'end_verification_at' when verification is done for the second time.
-28|`start_verification_at` | timestamp |  |  | 
-29|`end_verification_at` | timestamp |  |  | 
-30|`verifier_user_id` | uuid |  | [`users`](users.md) | User that did the verification. This must be the same user as assigned to qvp_company_employee_id
-31|`report_file_id` | varchar |  | [`file_storage`](file_storage.md) | uuid. a ref to a file containing the verification report
-32|`created_at` | timestamp |  |  | 
-33|`updated_at` | timestamp |  |  | 
-34|`deleted_status` | varchar |  |  | ACTIVE, DELETED
+20|`sla_days_count` | integer |  |  | Number of days that this vr is in verification - from setting PENDING status to setting one of the final statuses: VERIFIED, UNABLE_TO_VERIFY, REJECTED. This attribute is recalculated daily
+21|`verification_reject_reason_id` | uuid |  | [`verification_reject_reasons`](verification_reject_reasons.md) | Nullable. When verification_status is REJECTED or UNABLE_TO_VERIFY, a reject reason is required.
+22|`verification_reject_comment` | varchar |  |  | If verification_reject_reason_id is set and it requires comment, the comment is specified here.
+23|`verification_request_id` | uuid |  | [`verification_requests`](verification_requests.md) | VR that this vr_employment is attached to
+24|`qvp_company_id` | uuid |  | [`qvp_companies`](qvp_companies.md) | Service provider who does the verification
+25|`qvp_company_employee_id` | integer |  | [`qvp_company_employees`](qvp_company_employees.md) | Service provider employee assigned for this verification
+26|`appeal_count` | integer |  |  | Candidate can appeal requests in Rejected or Unable to verify statuses
+27|`first_verification_at` | timestamp |  |  | Same as 'end_verification_at' when verification is done for the first time.
+28|`second_verification_at` | timestamp |  |  | Same as 'end_verification_at' when verification is done for the second time.
+29|`start_verification_at` | timestamp |  |  | Date and time when verification started - verificaton_status became PENDING
+30|`end_verification_at` | timestamp |  |  | Date and time when verification finished - verification_status became one of: VERIFIED, UNABLE_TO_VERIFY, REJECTED, WITHDRAWN
+31|`verifier_user_id` | uuid |  | [`users`](users.md) | User that did the verification. This must be the same user as assigned to qvp_company_employee_id
+32|`report_file_id` | varchar |  | [`file_storage`](file_storage.md) | uuid. a ref to a file containing the verification report
+33|`created_at` | timestamp |  |  | 
+34|`updated_at` | timestamp |  |  | 
+35|`deleted_status` | varchar |  |  | ACTIVE, DELETED

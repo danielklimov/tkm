@@ -8,6 +8,7 @@ NO | NAME | DATA TYPE | PK | FK | DESCRIPTION
 2|`verification_request_id` | uuid |  | [`verification_requests`](verification_requests.md) | 
 3|`hyper_pay_payment_id` | varchar |  |  | hyper pay id for the payment 
 4|`payment_status_code` | varchar |  |  | One of: communication_rejected,rejected_by_asynchronous_workflow,external_rejected,pending,success
+4|`transaction_status` | varchar |  |  | One of: communication_rejected,rejected_by_asynchronous_workflow,external_rejected,pending,success
 5|`payer_email` | varchar |  |  | Applicant's email
 6|`payment_processing_description` | varchar |  |  | Message from payment processor: e.g. "Request successfully processed in 'Merchant in Integrator Test Mode'"
 7|`payment_brand` | varchar |  |  | One of MASTER, VISA, BRAND, MADA.

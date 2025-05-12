@@ -14,7 +14,7 @@ NO | NAME | DATA TYPE | PK | FK | DESCRIPTION
 8|`is_published` | boolean |  |  | shown in webapp
 9|`updated_by` | uuid |  | [`users`](users.md) | 
 10|`updated_at` | timestamp |  |  | 
+10|`updated_at` | timestamp |  |  | 
 11|`deleted_at` | timestamp |  |  | 
 12|`created_at` | timestamp |  |  | 
-13|`updated_at` | timestamp |  |  | 
 14|`deleted_status` | varchar |  |  | ACTIVE, DELETED

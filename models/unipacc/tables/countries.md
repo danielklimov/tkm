@@ -12,11 +12,13 @@ NO | NAME | DATA TYPE | PK | FK | DESCRIPTION
 6|`iso_3_code` | varchar |  |  | 3-letter ISO code
 7|`iso_2_code` | varchar |  |  | 2-letter ISO code
 8|`iso_no` | integer |  |  | ISO numeric country code
-9|`svp_country_type` | varchar |  |  | A way we define what verification flow is used for a specific country. One of: targeted, non_targeted
-10|`is_mofa_qvp_mandated` | boolean |  |  | Qualification verification for citizens (residents?) or this country is mandated (required) by MOFA (Ministry of Foreign Affairs). See also: country_mofa_qvp_mandated_history
-11|`is_mofa_svp_mandated` | boolean |  |  | Skill verification for citizens (residents?) or this country is mandated (required) by MOFA (Ministry of Foreign Affairs). See also: country_mofa_svp_mandated_history
-12|`is_lmh_qvp_mandated` | boolean |  |  | Qualification verification for this country is mandated by LMH.
-13|`is_lmh_svp_mandated` | boolean |  |  | Skill verification for this country is mandated by LMH.
-14|`created_at` | timestamp |  |  | 
-15|`updated_at` | timestamp |  |  | 
-16|`deleted_status` | varchar |  |  | ACTIVE, DELETED
+9|`svp_country_type` | varchar |  |  | One of: TARGETED, NON_TARGETED. TARGETED - exams are booked in Takamol test centers. NON_TARGETED - Prometric test centers are used.
+10|`svp_test_type` | varchar |  |  | Exam type. On of: IN_PERSON, ONLINE. Nullable if svp_country_type = TARGETED
+11|`is_mofa_qvp_mandated` | boolean |  |  | Qualification verification for citizens (residents?) or this country is mandated (required) by MOFA (Ministry of Foreign Affairs). See also: country_mofa_qvp_mandated_history
+12|`is_mofa_svp_mandated` | boolean |  |  | Skill verification for citizens (residents?) or this country is mandated (required) by MOFA (Ministry of Foreign Affairs). See also: country_mofa_svp_mandated_history
+13|`is_lmh_qvp_mandated` | boolean |  |  | Qualification verification for this country is mandated by LMH.
+14|`is_lmh_svp_mandated` | boolean |  |  | Skill verification for this country is mandated by LMH.
+15|`svp_certificate_price` | numeric(18,2) |  |  | Price (in USD) for an svp test in this country.
+16|`created_at` | timestamp |  |  | 
+17|`updated_at` | timestamp |  |  | 
+18|`deleted_status` | varchar |  |  | ACTIVE, DELETED

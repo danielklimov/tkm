@@ -10,8 +10,8 @@ NO | NAME | DATA TYPE | PK | FK | DESCRIPTION
 4|`verification_status` | varchar |  |  | Verification status that is connected to this reject reason. E.g. if vr_education is assigned REJECTED, then only reasons marked with verification_status = 'REJECTED' can be selected. If UNABLE_TO_VERIFY is chosen, other reject reasons will be available.
 5|`is_published` | boolean |  |  | Show in webapp
 6|`created_at` | timestamp |  |  | 
+6|`created_at` | timestamp |  |  | 
+7|`updated_at` | timestamp |  |  | 
 7|`updated_at` | timestamp |  |  | 
 8|`deleted_status` | varchar |  |  | ACTIVE, DELETED
-20|`created_at` | timestamp |  |  | 
-21|`updated_at` | timestamp |  |  | 
-22|`deleted_status` | integer |  |  | 0 - active record, 1 - deleted record.
+8|`deleted_status` | varchar |  |  | ACTIVE, DELETED

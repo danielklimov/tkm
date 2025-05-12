@@ -11,8 +11,8 @@ NO | NAME | DATA TYPE | PK | FK | DESCRIPTION
 5|`qvp_company_id` | uuid |  | [`qvp_companies`](qvp_companies.md) | Account owner
 6|`bank_account_confirmation_file_id` | uuid |  | [`file_storage`](file_storage.md) | Bank account confirmation file
 7|`created_at` | timestamp |  |  | 
+7|`created_at` | timestamp |  |  | 
+8|`updated_at` | timestamp |  |  | 
 8|`updated_at` | timestamp |  |  | 
 9|`deleted_status` | varchar |  |  | ACTIVE, DELETED
-21|`created_at` | timestamp |  |  | 
-22|`updated_at` | timestamp |  |  | 
-23|`deleted_status` | integer |  |  | 0 - active record, 1 - deleted record.
+9|`deleted_status` | varchar |  |  | ACTIVE, DELETED
