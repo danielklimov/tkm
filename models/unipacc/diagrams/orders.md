@@ -68,7 +68,7 @@ All Tables in the Diagram
 - [svp_bookings](../tables/svp_bookings.md)  
 
 
-### Orders ###
+### applicant_orders ###
 
 
 NO | NAME | DATA TYPE | PK | FK | DESCRIPTION            
