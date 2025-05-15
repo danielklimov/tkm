@@ -27,8 +27,8 @@ online businesses.
 
 The order entity consists of two tables:
 
-- the main table (header) - [applicant_orders](../tables/applicant_orders.md)
-- order items or 'lines' - [applicant_order_items](../tables/applicant_order_items.md).
+- the main table (header) - [applicant_orders](#applicant_orders)
+- order items or 'lines' - [applicant_order_items](#applicant_order_items).
 
 An order usually consist of only one line - "Qualification verification request" or
 "Skill verification exam". But additional items (lines) may be added, for example, "Additional fee".
