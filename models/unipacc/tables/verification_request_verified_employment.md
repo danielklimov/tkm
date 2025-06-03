@@ -21,11 +21,11 @@ title: verification_request_verified_employment
     <th>FK</th>
     <th>Description</th>
   </tr>
-<tr><td>1</td><td>`id`</td><td></td><td>V</td><td></td><td>surrogate key</td></tr>
-<tr><td>2</td><td>`verification_request_id`</td><td>uuid</td><td></td><td>[`verification_requests`](verification_requests.md)</td><td></td></tr>
-<tr><td>3</td><td>`employment_experience_id`</td><td>uuid</td><td></td><td>[`verification_request_employment`](verification_request_employment.md)</td><td></td></tr>
-<tr><td>4</td><td>`created_at`</td><td>timestamp</td><td></td><td></td><td></td></tr>
-<tr><td>5</td><td>`updated_at`</td><td>timestamp</td><td></td><td></td><td></td></tr>
-<tr><td>6</td><td>`deleted_status`</td><td>integer</td><td></td><td></td><td>0 - active record, 1 - deleted record.</td></tr>
+<tr><td>1</td><td>id</td><td></td><td>V</td><td></td><td>surrogate key</td></tr>
+<tr><td>2</td><td>verification_request_id</td><td>uuid</td><td></td><td><a href="verification_requests.md">verification_requests</a></td><td></td></tr>
+<tr><td>3</td><td>employment_experience_id</td><td>uuid</td><td></td><td><a href="verification_request_employment.md">verification_request_employment</a></td><td></td></tr>
+<tr><td>4</td><td>created_at</td><td>timestamp</td><td></td><td></td><td></td></tr>
+<tr><td>5</td><td>updated_at</td><td>timestamp</td><td></td><td></td><td></td></tr>
+<tr><td>6</td><td>deleted_status</td><td>integer</td><td></td><td></td><td>0 - active record, 1 - deleted record.</td></tr>
 
 </table>

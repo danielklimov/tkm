@@ -21,11 +21,11 @@ title: general_application_settings
     <th>FK</th>
     <th>Description</th>
   </tr>
-<tr><td>1</td><td>`id`</td><td>uuid</td><td>V</td><td></td><td>auto-generated</td></tr>
-<tr><td>2</td><td>`key`</td><td>varchar</td><td></td><td></td><td>Parameter key</td></tr>
-<tr><td>3</td><td>`value`</td><td>text</td><td></td><td></td><td>Parameter value</td></tr>
-<tr><td>4</td><td>`created_at`</td><td>timestamp</td><td></td><td></td><td></td></tr>
-<tr><td>5</td><td>`updated_at`</td><td>timestamp</td><td></td><td></td><td></td></tr>
-<tr><td>6</td><td>`deleted_status`</td><td>varchar</td><td></td><td></td><td>ACTIVE, DELETED</td></tr>
+<tr><td>1</td><td>id</td><td>uuid</td><td>V</td><td></td><td>auto-generated</td></tr>
+<tr><td>2</td><td>key</td><td>varchar</td><td></td><td></td><td>Parameter key</td></tr>
+<tr><td>3</td><td>value</td><td>text</td><td></td><td></td><td>Parameter value</td></tr>
+<tr><td>4</td><td>created_at</td><td>timestamp</td><td></td><td></td><td></td></tr>
+<tr><td>5</td><td>updated_at</td><td>timestamp</td><td></td><td></td><td></td></tr>
+<tr><td>6</td><td>deleted_status</td><td>varchar</td><td></td><td></td><td>ACTIVE, DELETED</td></tr>
 
 </table>

@@ -21,13 +21,13 @@ title: verification_request_validations
     <th>FK</th>
     <th>Description</th>
   </tr>
-<tr><td>1</td><td>`id`</td><td>uuid</td><td>V</td><td></td><td></td></tr>
-<tr><td>2</td><td>`verification_request_id`</td><td>uudi</td><td></td><td>[`verification_requests`](verification_requests.md)</td><td>Verification request that was validated</td></tr>
-<tr><td>3</td><td>`verification_request_type`</td><td>varchar</td><td></td><td></td><td>One of: professionalCertificate, experience, education</td></tr>
-<tr><td>4</td><td>`invalid_fields`</td><td>text</td><td></td><td></td><td>List of invalid fields separated by commas.</td></tr>
-<tr><td>5</td><td>`validation_ts`</td><td>timestamp</td><td></td><td></td><td>Date and time of validation.</td></tr>
-<tr><td>6</td><td>`created_at`</td><td>timestamp</td><td></td><td></td><td></td></tr>
-<tr><td>7</td><td>`updated_at`</td><td>timestamp</td><td></td><td></td><td></td></tr>
-<tr><td>8</td><td>`deleted_status`</td><td>integer</td><td></td><td></td><td>0 - active record, 1 - deleted record.</td></tr>
+<tr><td>1</td><td>id</td><td>uuid</td><td>V</td><td></td><td></td></tr>
+<tr><td>2</td><td>verification_request_id</td><td>uudi</td><td></td><td><a href="verification_requests.md">verification_requests</a></td><td>Verification request that was validated</td></tr>
+<tr><td>3</td><td>verification_request_type</td><td>varchar</td><td></td><td></td><td>One of: professionalCertificate, experience, education</td></tr>
+<tr><td>4</td><td>invalid_fields</td><td>text</td><td></td><td></td><td>List of invalid fields separated by commas.</td></tr>
+<tr><td>5</td><td>validation_ts</td><td>timestamp</td><td></td><td></td><td>Date and time of validation.</td></tr>
+<tr><td>6</td><td>created_at</td><td>timestamp</td><td></td><td></td><td></td></tr>
+<tr><td>7</td><td>updated_at</td><td>timestamp</td><td></td><td></td><td></td></tr>
+<tr><td>8</td><td>deleted_status</td><td>integer</td><td></td><td></td><td>0 - active record, 1 - deleted record.</td></tr>
 
 </table>

@@ -21,11 +21,11 @@ title: qvp_company_verification_types
     <th>FK</th>
     <th>Description</th>
   </tr>
-<tr><td>1</td><td>`id`</td><td>uuid</td><td>V</td><td></td><td>autogen</td></tr>
-<tr><td>2</td><td>`qvp_company_id`</td><td>uuid</td><td></td><td>[`qvp_companies`](qvp_companies.md)</td><td></td></tr>
-<tr><td>3</td><td>`verification_type`</td><td>varchar</td><td></td><td></td><td>Verification type. Enum. One of: EDUCATION,PROFESSIONAL_CERTIFICATE,EXPERIENCE</td></tr>
-<tr><td>4</td><td>`created_at`</td><td>timestamp</td><td></td><td></td><td></td></tr>
-<tr><td>5</td><td>`updated_at`</td><td>timestamp</td><td></td><td></td><td></td></tr>
-<tr><td>6</td><td>`deleted_status`</td><td>varchar</td><td></td><td></td><td>ACTIVE, DELETED</td></tr>
+<tr><td>1</td><td>id</td><td>uuid</td><td>V</td><td></td><td>autogen</td></tr>
+<tr><td>2</td><td>qvp_company_id</td><td>uuid</td><td></td><td><a href="qvp_companies.md">qvp_companies</a></td><td></td></tr>
+<tr><td>3</td><td>verification_type</td><td>varchar</td><td></td><td></td><td>Verification type. Enum. One of: EDUCATION,PROFESSIONAL_CERTIFICATE,EXPERIENCE</td></tr>
+<tr><td>4</td><td>created_at</td><td>timestamp</td><td></td><td></td><td></td></tr>
+<tr><td>5</td><td>updated_at</td><td>timestamp</td><td></td><td></td><td></td></tr>
+<tr><td>6</td><td>deleted_status</td><td>varchar</td><td></td><td></td><td>ACTIVE, DELETED</td></tr>
 
 </table>
