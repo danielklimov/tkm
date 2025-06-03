@@ -1,23 +1,42 @@
-users
-----------------------------
+---
+title: users 
+---
 
+## Fields
 
-NO | NAME | DATA TYPE | PK | FK | DESCRIPTION            
----|------|-----------|----|----|-------------
-1|`id` | uuid | V |  | 
-2|`email` | varchar |  |  | User's email used for logging in
-3|`roles` | varchar[] |  |  | Roles
-4|`first_name` | varchar |  |  | 
-5|`last_name` | varchar |  |  | 
-6|`phone_number` | varchar |  |  | 
-7|`phone_country_code_id` | uuid |  | [`phone_country_codes`](phone_country_codes.md) | Phone country code
-8|`password` | varchar |  |  | password digest.
-9|`last_active_at` | timestamp |  |  | 
-10|`invalid_login_attempts` | integer |  |  | 
-11|`two_factor_secret_key` | varchar |  |  | 
-12|`is_second_factor_passed` | boolean |  |  | 
-13|`ui_lang` | varchar |  |  | User interface language. One of: en, ar
-14|`notification_lang` | varchar |  |  | Language, selected by user for receiving notifications - two-letter code. One of: en, ar
-15|`created_at` | timestamp |  |  | 
-16|`updated_at` | timestamp |  |  | 
-17|`deleted_status` | integer |  |  | 0 - active record, 1 - deleted record.
+<table style="width: 100%">
+    <colgroup>
+       <col span="1" style="width: 3%;"/>
+       <col span="1" style="width: 12%;"/>
+       <col span="1" style="width: 10%;"/>
+       <col span="1" style="width: 3%;"/>
+       <col span="1" style="width: 12%;"/>
+       <col span="1" style="width: 60%;"/>
+    </colgroup>
+  <tr>
+    <th>N</th>
+    <th>Name</th>
+    <th>Data type</th>
+    <th>PK</th>
+    <th>FK</th>
+    <th>Description</th>
+  </tr>
+<tr><td>1</td><td>`id`</td><td>uuid</td><td>V</td><td></td><td></td></tr>
+<tr><td>2</td><td>`email`</td><td>varchar</td><td></td><td></td><td>User's email used for logging in</td></tr>
+<tr><td>3</td><td>`roles`</td><td>varchar[]</td><td></td><td></td><td>Roles</td></tr>
+<tr><td>4</td><td>`first_name`</td><td>varchar</td><td></td><td></td><td></td></tr>
+<tr><td>5</td><td>`last_name`</td><td>varchar</td><td></td><td></td><td></td></tr>
+<tr><td>6</td><td>`phone_number`</td><td>varchar</td><td></td><td></td><td></td></tr>
+<tr><td>7</td><td>`phone_country_code_id`</td><td>uuid</td><td></td><td>[`phone_country_codes`](phone_country_codes.md)</td><td>Phone country code</td></tr>
+<tr><td>8</td><td>`password`</td><td>varchar</td><td></td><td></td><td>password digest.</td></tr>
+<tr><td>9</td><td>`last_active_at`</td><td>timestamp</td><td></td><td></td><td></td></tr>
+<tr><td>10</td><td>`invalid_login_attempts`</td><td>integer</td><td></td><td></td><td></td></tr>
+<tr><td>11</td><td>`two_factor_secret_key`</td><td>varchar</td><td></td><td></td><td></td></tr>
+<tr><td>12</td><td>`is_second_factor_passed`</td><td>boolean</td><td></td><td></td><td></td></tr>
+<tr><td>13</td><td>`ui_lang`</td><td>varchar</td><td></td><td></td><td>User interface language. One of: en, ar</td></tr>
+<tr><td>14</td><td>`notification_lang`</td><td>varchar</td><td></td><td></td><td>Language, selected by user for receiving notifications - two-letter code. One of: en, ar</td></tr>
+<tr><td>15</td><td>`created_at`</td><td>timestamp</td><td></td><td></td><td></td></tr>
+<tr><td>16</td><td>`updated_at`</td><td>timestamp</td><td></td><td></td><td></td></tr>
+<tr><td>17</td><td>`deleted_status`</td><td>integer</td><td></td><td></td><td>0 - active record, 1 - deleted record.</td></tr>
+
+</table>

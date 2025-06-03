@@ -1,13 +1,32 @@
-applicant_passport_history
-----------------------------
+---
+title: applicant_passport_history 
+---
 
+## Fields
 
-NO | NAME | DATA TYPE | PK | FK | DESCRIPTION            
----|------|-----------|----|----|-------------
-1|`id` | uuid | V |  | Surrogate key
-2|`applicant_id` | uuid |  | [`applicants`](applicants.md) | Applicant - the owner of the passport
-3|`passport_id` | uuid |  | [`passports`](passports.md) | The cuurrently active passport
-4|`valid_from` | date |  |  | The date when this record becomes active
-5|`created_at` | timestamp |  |  | System field - date and time when the record was created
-6|`updated_at` | timestamp |  |  | System field - date and time when the record was modified (or created when the record is new)
-7|`deleted_status` | varchar |  |  | ACTIVE, DELETED
+<table style="width: 100%">
+    <colgroup>
+       <col span="1" style="width: 3%;"/>
+       <col span="1" style="width: 12%;"/>
+       <col span="1" style="width: 10%;"/>
+       <col span="1" style="width: 3%;"/>
+       <col span="1" style="width: 12%;"/>
+       <col span="1" style="width: 60%;"/>
+    </colgroup>
+  <tr>
+    <th>N</th>
+    <th>Name</th>
+    <th>Data type</th>
+    <th>PK</th>
+    <th>FK</th>
+    <th>Description</th>
+  </tr>
+<tr><td>1</td><td>`id`</td><td>uuid</td><td>V</td><td></td><td>Surrogate key</td></tr>
+<tr><td>2</td><td>`applicant_id`</td><td>uuid</td><td></td><td>[`applicants`](applicants.md)</td><td>Applicant - the owner of the passport</td></tr>
+<tr><td>3</td><td>`passport_id`</td><td>uuid</td><td></td><td>[`passports`](passports.md)</td><td>The cuurrently active passport</td></tr>
+<tr><td>4</td><td>`valid_from`</td><td>date</td><td></td><td></td><td>The date when this record becomes active</td></tr>
+<tr><td>5</td><td>`created_at`</td><td>timestamp</td><td></td><td></td><td>System field - date and time when the record was created</td></tr>
+<tr><td>6</td><td>`updated_at`</td><td>timestamp</td><td></td><td></td><td>System field - date and time when the record was modified (or created when the record is new)</td></tr>
+<tr><td>7</td><td>`deleted_status`</td><td>varchar</td><td></td><td></td><td>ACTIVE, DELETED</td></tr>
+
+</table>

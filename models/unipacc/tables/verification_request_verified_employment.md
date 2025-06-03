@@ -1,12 +1,31 @@
-verification_request_verified_employment
-----------------------------
+---
+title: verification_request_verified_employment 
+---
 
+## Fields
 
-NO | NAME | DATA TYPE | PK | FK | DESCRIPTION            
----|------|-----------|----|----|-------------
-1|`id` |  | V |  | surrogate key
-2|`verification_request_id` | uuid |  | [`verification_requests`](verification_requests.md) | 
-3|`employment_experience_id` | uuid |  | [`verification_request_employment`](verification_request_employment.md) | 
-4|`created_at` | timestamp |  |  | 
-5|`updated_at` | timestamp |  |  | 
-6|`deleted_status` | integer |  |  | 0 - active record, 1 - deleted record.
+<table style="width: 100%">
+    <colgroup>
+       <col span="1" style="width: 3%;"/>
+       <col span="1" style="width: 12%;"/>
+       <col span="1" style="width: 10%;"/>
+       <col span="1" style="width: 3%;"/>
+       <col span="1" style="width: 12%;"/>
+       <col span="1" style="width: 60%;"/>
+    </colgroup>
+  <tr>
+    <th>N</th>
+    <th>Name</th>
+    <th>Data type</th>
+    <th>PK</th>
+    <th>FK</th>
+    <th>Description</th>
+  </tr>
+<tr><td>1</td><td>`id`</td><td></td><td>V</td><td></td><td>surrogate key</td></tr>
+<tr><td>2</td><td>`verification_request_id`</td><td>uuid</td><td></td><td>[`verification_requests`](verification_requests.md)</td><td></td></tr>
+<tr><td>3</td><td>`employment_experience_id`</td><td>uuid</td><td></td><td>[`verification_request_employment`](verification_request_employment.md)</td><td></td></tr>
+<tr><td>4</td><td>`created_at`</td><td>timestamp</td><td></td><td></td><td></td></tr>
+<tr><td>5</td><td>`updated_at`</td><td>timestamp</td><td></td><td></td><td></td></tr>
+<tr><td>6</td><td>`deleted_status`</td><td>integer</td><td></td><td></td><td>0 - active record, 1 - deleted record.</td></tr>
+
+</table>

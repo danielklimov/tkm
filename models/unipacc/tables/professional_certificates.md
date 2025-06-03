@@ -1,20 +1,39 @@
-professional_certificates
-----------------------------
+---
+title: professional_certificates 
+---
 
+## Fields
 
-NO | NAME | DATA TYPE | PK | FK | DESCRIPTION            
----|------|-----------|----|----|-------------
-1|`id` | uuid | V |  | 
-2|`name_en` | varchar |  |  | certificate name in English
-3|`name_ar` | varchar |  |  | certificate name in Arabic
-4|`institute_name_en` | varchar |  |  | Institute or organization that issues the certificate
-5|`institute_name_ar` | varchar |  |  | Institute or organization that issues the certificate
-6|`is_online_verification` | boolean |  |  | Possible to check the certificate online
-7|`online_verification_url` | varchar |  |  | URL that points to certification institute website
-8|`is_published` | boolean |  |  | shown in webapp
-9|`updated_by` | uuid |  | [`users`](users.md) | 
-10|`updated_at` | timestamp |  |  | 
-10|`updated_at` | timestamp |  |  | 
-11|`deleted_at` | timestamp |  |  | 
-12|`created_at` | timestamp |  |  | 
-14|`deleted_status` | varchar |  |  | ACTIVE, DELETED
+<table style="width: 100%">
+    <colgroup>
+       <col span="1" style="width: 3%;"/>
+       <col span="1" style="width: 12%;"/>
+       <col span="1" style="width: 10%;"/>
+       <col span="1" style="width: 3%;"/>
+       <col span="1" style="width: 12%;"/>
+       <col span="1" style="width: 60%;"/>
+    </colgroup>
+  <tr>
+    <th>N</th>
+    <th>Name</th>
+    <th>Data type</th>
+    <th>PK</th>
+    <th>FK</th>
+    <th>Description</th>
+  </tr>
+<tr><td>1</td><td>`id`</td><td>uuid</td><td>V</td><td></td><td></td></tr>
+<tr><td>2</td><td>`name_en`</td><td>varchar</td><td></td><td></td><td>certificate name in English</td></tr>
+<tr><td>3</td><td>`name_ar`</td><td>varchar</td><td></td><td></td><td>certificate name in Arabic</td></tr>
+<tr><td>4</td><td>`institute_name_en`</td><td>varchar</td><td></td><td></td><td>Institute or organization that issues the certificate</td></tr>
+<tr><td>5</td><td>`institute_name_ar`</td><td>varchar</td><td></td><td></td><td>Institute or organization that issues the certificate</td></tr>
+<tr><td>6</td><td>`is_online_verification`</td><td>boolean</td><td></td><td></td><td>Possible to check the certificate online</td></tr>
+<tr><td>7</td><td>`online_verification_url`</td><td>varchar</td><td></td><td></td><td>URL that points to certification institute website</td></tr>
+<tr><td>8</td><td>`is_published`</td><td>boolean</td><td></td><td></td><td>shown in webapp</td></tr>
+<tr><td>9</td><td>`updated_by`</td><td>uuid</td><td></td><td>[`users`](users.md)</td><td></td></tr>
+<tr><td>10</td><td>`updated_at`</td><td>timestamp</td><td></td><td></td><td></td></tr>
+<tr><td>10</td><td>`updated_at`</td><td>timestamp</td><td></td><td></td><td></td></tr>
+<tr><td>11</td><td>`deleted_at`</td><td>timestamp</td><td></td><td></td><td></td></tr>
+<tr><td>12</td><td>`created_at`</td><td>timestamp</td><td></td><td></td><td></td></tr>
+<tr><td>14</td><td>`deleted_status`</td><td>varchar</td><td></td><td></td><td>ACTIVE, DELETED</td></tr>
+
+</table>

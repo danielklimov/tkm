@@ -1,19 +1,38 @@
-verification_request_personas
-----------------------------
+---
+title: verification_request_personas 
+---
 
+## Fields
 
-NO | NAME | DATA TYPE | PK | FK | DESCRIPTION            
----|------|-----------|----|----|-------------
-1|`id` | uuid | V |  | 
-2|`first_name` | varchar |  |  | 
-3|`last_name` | varchar |  |  | 
-4|`middle_name` | varchar |  |  | Middle name or father's name
-5|`gender` | varchar |  |  | One of: 'Female', 'Male'
-6|`date_of_birth` | date |  |  | 
-7|`nationality_id` | uuid |  | [`countries`](countries.md) | Country of nationality (citizenship).
-8|`passport_id` | uuid |  | [`passport`](passport.md) | User's current passport.
-9|`country_of_residence_id` | uuid |  | [`countries`](countries.md) | User's current country of residence (location).
-10|`state_province` | varchar |  |  | State or province of current location (residence?)
-11|`created_at` | timestamp |  |  | 
-12|`updated_at` | timestamp |  |  | 
-13|`deleted_status` | integer |  |  | 0 - active record, 1 - deleted record.
+<table style="width: 100%">
+    <colgroup>
+       <col span="1" style="width: 3%;"/>
+       <col span="1" style="width: 12%;"/>
+       <col span="1" style="width: 10%;"/>
+       <col span="1" style="width: 3%;"/>
+       <col span="1" style="width: 12%;"/>
+       <col span="1" style="width: 60%;"/>
+    </colgroup>
+  <tr>
+    <th>N</th>
+    <th>Name</th>
+    <th>Data type</th>
+    <th>PK</th>
+    <th>FK</th>
+    <th>Description</th>
+  </tr>
+<tr><td>1</td><td>`id`</td><td>uuid</td><td>V</td><td></td><td></td></tr>
+<tr><td>2</td><td>`first_name`</td><td>varchar</td><td></td><td></td><td></td></tr>
+<tr><td>3</td><td>`last_name`</td><td>varchar</td><td></td><td></td><td></td></tr>
+<tr><td>4</td><td>`middle_name`</td><td>varchar</td><td></td><td></td><td>Middle name or father's name</td></tr>
+<tr><td>5</td><td>`gender`</td><td>varchar</td><td></td><td></td><td>One of: 'Female', 'Male'</td></tr>
+<tr><td>6</td><td>`date_of_birth`</td><td>date</td><td></td><td></td><td></td></tr>
+<tr><td>7</td><td>`nationality_id`</td><td>uuid</td><td></td><td>[`countries`](countries.md)</td><td>Country of nationality (citizenship).</td></tr>
+<tr><td>8</td><td>`passport_id`</td><td>uuid</td><td></td><td>[`passport`](passport.md)</td><td>User's current passport.</td></tr>
+<tr><td>9</td><td>`country_of_residence_id`</td><td>uuid</td><td></td><td>[`countries`](countries.md)</td><td>User's current country of residence (location).</td></tr>
+<tr><td>10</td><td>`state_province`</td><td>varchar</td><td></td><td></td><td>State or province of current location (residence?)</td></tr>
+<tr><td>11</td><td>`created_at`</td><td>timestamp</td><td></td><td></td><td></td></tr>
+<tr><td>12</td><td>`updated_at`</td><td>timestamp</td><td></td><td></td><td></td></tr>
+<tr><td>13</td><td>`deleted_status`</td><td>integer</td><td></td><td></td><td>0 - active record, 1 - deleted record.</td></tr>
+
+</table>

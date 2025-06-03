@@ -1,23 +1,42 @@
-verification_request_sla_holds
-----------------------------
+---
+title: verification_request_sla_holds 
+---
 
+## Fields
 
-NO | NAME | DATA TYPE | PK | FK | DESCRIPTION            
----|------|-----------|----|----|-------------
-1|`id` | uuid | V |  | autogen
-2|`request_id` | uuid |  | [`verification_requests`](verification_requests.md) | VR that caused this hold
-3|`education_id` | uuid |  | [`verification_request_education`](verification_request_education.md) | Education record that caused a hold
-4|`profeccional_certificate_id` | uuid |  | [`verification_request_professional_certificates`](verification_request_professional_certificates.md) | Professional certificate record that caused a hold
-5|`employment_experience_id` | uuid |  | [`verification_request_employment`](verification_request_employment.md) | Employment record that caused a hold
-6|`user_id` | uuid |  | [`users`](users.md) | User that created a hold
-7|`start_ts` | long |  |  | unix epoch (ms since 1 jan 1970)
-8|`stop_ts` | long |  |  | unix epoch (ms since 1 jan 1970)
-9|`hold_duration_secs` | long |  |  | Hold duration in seconds
-10|`hold_status` | varchar |  |  | one of: on_hold, in_progress
-11|`reason` | varchar |  |  | Arbitrary string e.g. 'Educational institute does not respond'
-12|`description` | text |  |  | Detailed description of the hold
-13|`revoke_comment` | varchar |  |  | Arbitrary string - a description of how/why the hold was revoked
-14|`previous_status` | varchar |  |  | Previous status of verification_request, that is, the status of VR at the moment when the hold was created
-15|`created_at` | timestamp |  |  | 
-16|`updated_at` | timestamp |  |  | 
-17|`deleted_status` | integer |  |  | 0 - active record, 1 - deleted record.
+<table style="width: 100%">
+    <colgroup>
+       <col span="1" style="width: 3%;"/>
+       <col span="1" style="width: 12%;"/>
+       <col span="1" style="width: 10%;"/>
+       <col span="1" style="width: 3%;"/>
+       <col span="1" style="width: 12%;"/>
+       <col span="1" style="width: 60%;"/>
+    </colgroup>
+  <tr>
+    <th>N</th>
+    <th>Name</th>
+    <th>Data type</th>
+    <th>PK</th>
+    <th>FK</th>
+    <th>Description</th>
+  </tr>
+<tr><td>1</td><td>`id`</td><td>uuid</td><td>V</td><td></td><td>autogen</td></tr>
+<tr><td>2</td><td>`request_id`</td><td>uuid</td><td></td><td>[`verification_requests`](verification_requests.md)</td><td>VR that caused this hold</td></tr>
+<tr><td>3</td><td>`education_id`</td><td>uuid</td><td></td><td>[`verification_request_education`](verification_request_education.md)</td><td>Education record that caused a hold</td></tr>
+<tr><td>4</td><td>`profeccional_certificate_id`</td><td>uuid</td><td></td><td>[`verification_request_professional_certificates`](verification_request_professional_certificates.md)</td><td>Professional certificate record that caused a hold</td></tr>
+<tr><td>5</td><td>`employment_experience_id`</td><td>uuid</td><td></td><td>[`verification_request_employment`](verification_request_employment.md)</td><td>Employment record that caused a hold</td></tr>
+<tr><td>6</td><td>`user_id`</td><td>uuid</td><td></td><td>[`users`](users.md)</td><td>User that created a hold</td></tr>
+<tr><td>7</td><td>`start_ts`</td><td>long</td><td></td><td></td><td>unix epoch (ms since 1 jan 1970)</td></tr>
+<tr><td>8</td><td>`stop_ts`</td><td>long</td><td></td><td></td><td>unix epoch (ms since 1 jan 1970)</td></tr>
+<tr><td>9</td><td>`hold_duration_secs`</td><td>long</td><td></td><td></td><td>Hold duration in seconds</td></tr>
+<tr><td>10</td><td>`hold_status`</td><td>varchar</td><td></td><td></td><td>one of: on_hold, in_progress</td></tr>
+<tr><td>11</td><td>`reason`</td><td>varchar</td><td></td><td></td><td>Arbitrary string e.g. 'Educational institute does not respond'</td></tr>
+<tr><td>12</td><td>`description`</td><td>text</td><td></td><td></td><td>Detailed description of the hold</td></tr>
+<tr><td>13</td><td>`revoke_comment`</td><td>varchar</td><td></td><td></td><td>Arbitrary string - a description of how/why the hold was revoked</td></tr>
+<tr><td>14</td><td>`previous_status`</td><td>varchar</td><td></td><td></td><td>Previous status of verification_request, that is, the status of VR at the moment when the hold was created</td></tr>
+<tr><td>15</td><td>`created_at`</td><td>timestamp</td><td></td><td></td><td></td></tr>
+<tr><td>16</td><td>`updated_at`</td><td>timestamp</td><td></td><td></td><td></td></tr>
+<tr><td>17</td><td>`deleted_status`</td><td>integer</td><td></td><td></td><td>0 - active record, 1 - deleted record.</td></tr>
+
+</table>
